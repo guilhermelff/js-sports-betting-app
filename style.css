@@ -1,0 +1,31 @@
+body {
+  background-color: #394867;
+}
+
+
+#card {
+    background-color:  #2F3C55;
+}
+
+
+#teste {
+    background-color:  red;
+}
+
+
+.form-control {
+    background-color:  #394867;
+}
+
+.btn {
+    background-color:  #394867;
+}
+
+#logo-login {
+    max-width: 50%;
+    height: auto;
+}
+
+.form-control:focus{
+    background-color: #06061B;
+}
