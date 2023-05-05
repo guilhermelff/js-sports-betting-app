@@ -17,14 +17,33 @@ body {
     background-color:  #394867;
 }
 
+.form-control:hover {
+    background-color:  #6985bd;
+}
+
+
 .btn {
     background-color:  #394867;
+}
+
+.btn:hover {
+    background-color:  #6985bd;
+}
+
+p a:hover {
+    color:  rgb(186, 193, 207);
+}
+
+p a {
+    color: rgb(152, 158, 170)
 }
 
 #logo-login {
     max-width: 50%;
     height: auto;
 }
+
+
 
 .form-control:focus{
     background-color: #06061B;
