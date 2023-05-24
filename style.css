@@ -12,6 +12,26 @@ body {
     background-color:  red;
 }
 
+#red {
+    color : #FF5252
+}
+
+#green {
+    color : #0DE975
+}
+
+#dark-blue {
+    color : #2F3C55
+}
+
+#light-blue {
+    color : #263859
+}
+
+#yellow {
+    color : #F2C94C
+}
+
 
 .form-control {
     background-color:  #394867;
@@ -36,6 +56,10 @@ p a:hover {
 
 p a {
     color: rgb(152, 158, 170)
+}
+
+a {
+    color : #F2C94C
 }
 
 #logo-login {
