@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro|Nunito&display=swap');
+
+
 body {
   background-color: #394867;
 }
 
+#formFileLg {
+    font-size: small!important;
+}
 
 #card {
     background-color:  #2F3C55;
@@ -50,6 +56,8 @@ body {
     background-color:  #6985bd;
 }
 
+
+
 p a:hover {
     color:  rgb(186, 193, 207);
 }
@@ -72,3 +80,39 @@ a {
 .form-control:focus{
     background-color: #06061B;
 }
+
+
+
+
+
+.chip{
+	padding: 8px 10px;
+	border-radius: 10px;
+	font-weight: 600;
+	font-size: 12px;
+	box-shadow: 0 2px 5px rgba(0,0,0,.25);
+	margin: 0 10px;
+	
+	cursor: pointer;
+}
+
+.chip.primary{
+	background: #F2C94C;
+	color: white;
+}
+
+.chip.secondary{
+	background: #979797;
+	color: white;
+}
+
+.chip.terciary{
+	background:#9D745A;
+	color: whitesmoke;
+}
+
+.chip.comum{
+	background:whitesmoke;
+	color: gray;
+}
+

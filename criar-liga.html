@@ -10,64 +10,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <!-- Or for RTL support -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
 
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <section class="vh-100 gradient-custom">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-md-12 col-xl-4">
-                    <div class="text-white text-center">
-                        <h4 class="mb-2">Minhas Ligas</h4>
-                    </div>
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card text-white" style="border-radius: 1rem;" id="card">
+                        <div class="card-body p-5 text-center">
 
-                    <div class="card" style="border-radius: 1rem;" id="card">
+                            <div class="mb-md-5 mt-md-4 pb-5">
 
-                        <div class="card-body ">
 
-                            <div class="row">
-                                <div class="col-xl-6 mb-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="d-flex align-items-center">
-                                                    <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
-                                                        style="width: 45px; height: 45px" class="rounded-circle" />
-                                                    <div class="ms-3">
-                                                        <p class="fw-bold mb-1">John Doe</p>
-                                                        <p class="text-muted mb-0">john.doe@gmail.com</p>
-                                                    </div>
-                                                </div>
-                                                <a>Active</a>
-                                            </div>
-                                        </div>
+                                <p class="text-white-50 mb-5">Crie sua Liga</p>
 
-                                    </div>
-                                    <div class="d-flex justify-content-center align-items-center h-75">
-                                        <button class=" btn btn-outline-light btn-lg px-5" type="submit">
-                                            Criar Liga
-                                        </button>
-                                    </div>
-
+                                <div class="form-outline form-white mb-4">
+                                    <input class="form-control form-control-lg text-white-50" id="formFileLg"
+                                        type="file">
+                                    <label for="formFileLg" class="form-label">Imagem da Liga</label>
                                 </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <input type="user" id="typeUserX" class="form-control text-white-50" />
+                                    <label class="form-label" for="typeUserX">Nome</label>
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <select class="form-select mb-4" id="multiple-select-custom-field"
+                                        data-placeholder="Escolha da sua lista de amigos" multiple>
+                                        <option>Pedro</option>
+                                        <option>João</option>
+                                        <option>Guilherme</option>
+                                        <option>Marcos</option>
+                                    </select>
+                                    <label class="form-label" for="multiple-select-custom-field">Participantes</label>
+                                </div>
+
+
+
+
+
+
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Criar Liga</button>
 
 
 
                             </div>
 
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
-    <script src="" async defer></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
