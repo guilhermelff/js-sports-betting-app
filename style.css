@@ -3,6 +3,7 @@
 
 body {
   background-color: #394867;
+  overflow-y:hidden;
 }
 
 #formFileLg {
@@ -116,3 +117,6 @@ a {
 	color: gray;
 }
 
+#nav {
+  background-color: #2F3C55;
+}
