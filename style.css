@@ -3,7 +3,11 @@
 
 body {
   background-color: #394867;
-  overflow-y:hidden;
+  
+}
+
+.espaco{
+    color: #2F3C55;
 }
 
 #formFileLg {
@@ -12,11 +16,21 @@ body {
 
 #card {
     background-color:  #2F3C55;
+    
 }
 
 
-#teste {
+#testevermelho {
     background-color:  red;
+}
+
+#testeverde {
+    background-color:  green;
+    
+}
+
+#testeamarelo {
+    background-color: yellow;
 }
 
 #red {
@@ -67,9 +81,52 @@ p a {
     color: rgb(152, 158, 170)
 }
 
-a {
-    color : #F2C94C
+i:hover {
+    color:  rgb(186, 193, 207);
 }
+
+.sub-menu a  {
+    color: rgb(152, 158, 170);
+    text-decoration: none;
+}
+
+.ativo-home-icon #home-icon{
+    color: white;
+}
+
+.ativo-home-sub #home-sub{
+    color: white;
+}
+
+.ativo-ligas-icon #ligas-icon{
+    color: white;
+}
+
+.ativo-ligas-sub #ligas-sub{
+    color: white;
+}
+
+.ativo-ranking-icon #ranking-icon{
+    color: white;
+}
+
+.ativo-ranking-sub #ranking-sub{
+    color: white;
+}
+
+.ativo-amigos-icon #amigos-icon{
+    color: white;
+}
+
+.ativo-amigos-sub #amigos-sub{
+    color: white;
+}
+
+.ativo:hover{
+    color: white
+}
+
+
 
 #logo-login {
     max-width: 50%;
@@ -83,8 +140,9 @@ a {
 }
 
 
-
-
+#nav {
+  background-color: #2F3C55;
+}
 
 .chip{
 	padding: 8px 10px;
@@ -117,6 +175,18 @@ a {
 	color: gray;
 }
 
-#nav {
-  background-color: #2F3C55;
+.sub-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
+}
+
+.sub-menu .menu-title {
+    color: #adb0bd;
+    ;
+}
+
+i {
+    color: #adb0bd;
 }

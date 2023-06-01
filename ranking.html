@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -17,182 +16,18 @@
 
 <body>
 
-    <nav class="navbar sticky-top" id="nav">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="palpiteiro-icone-extra-pq.png" alt="Bootstrap" width="44px" height="40px">
-            </a>
+    <div w3-include-html="nav-top.html" class="sticky-top"></div>
+    <div w3-include-html="ranking-element.html"></div>
+    <div w3-include-html="nav-bottom.html" class="sticky-bottom ativo-ranking-icon ativo-ranking-sub"></div>
 
-            <div class="d-inline-flex">
-                <p class="mt-2 h5 text-white-50">54p </p>
-                <p class="mt-2 h5"> - </p>
-                <p class="mt-2 h5" id="green">7</p>
-                <p class="mt-2 h5"> - </p>
-                <p class="mt-2 h5" id="red">2</p>
-                <p class="mt-2 h5"> - </p>
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                    class="rounded-circle" style="width: 40px;" height="40px" />
-            </div>
-        </div>
-    </nav>
-
-
-
-    <section class="vh-100 gradient-custom">
-        <div class="container py-5 ">
-            <div class="row d-flex justify-content-center align-items-center">
-                <div class="col-md-12 col-xl-4">
-                    <div class="text-white text-center">
-                        <h4 class="mb-2">Ranking</h4>
-                    </div>
-                    <div class="card text-white" style="border-radius: 1rem;" id="card">
-                        <div class="card-body ">
-
-                            <div class="d-flex justify-content-between text-center mb-2">
-                                <div class="px-5">
-                                    <p class="mb-2 h5" id="green">7</p>
-                                    <p class="text mb-0 text-white-50">Greens</p>
-                                </div>
-                                <div class="px-5">
-                                    <p class="mb-2 h5" id="red">2</p>
-                                    <p class="text mb-0 text-white-50">Reds</p>
-                                </div>
-
-                            </div>
-
-                            <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                                    <span class="chip primary">
-                                        1
-                                    </span>
-                                    <span><img
-                                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                                            class="rounded-circle img-fluid" style="width: 25px;" /></span>
-                                    @anamaria
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                                    <span class="chip secondary">
-                                        2
-                                    </span>
-                                    <span><img
-                                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                                            class="rounded-circle img-fluid" style="width: 25px;" /></span>
-                                    @juliaalmeida
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                                    <span class="chip terciary">
-                                        3
-                                    </span>
-                                    <span><img
-                                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                                            class="rounded-circle img-fluid" style="width: 25px;" /></span>
-                                    @juliaalmeida
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                                    <span class="chip comum">
-                                        4
-                                    </span>
-                                    <span><img
-                                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                                            class="rounded-circle img-fluid" style="width: 25px;" /></span>
-                                    @juliaalmeida
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                                    <span class="chip comum">
-                                        5
-                                    </span>
-                                    <span><img
-                                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                                            class="rounded-circle img-fluid" style="width: 25px;" /></span>
-                                    @juliaalmeida
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                                    <span class="chip comum">
-                                        6
-                                    </span>
-                                    <span><img
-                                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                                            class="rounded-circle img-fluid" style="width: 25px;" /></span>
-                                    @juliaalmeida
-                                </a>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <nav class="navbar sticky-bottom" id="nav">
-        <div class="container-fluid justify-content-center">
-
-
-            <div class="d-flex">
-                <div class="justify-content-center">
-                    <a href="
-                                    ">
-                        <i class="fa-solid fa-house fa-2xl" id="home" style="color: #adb0bd;"></i>
-                        <p>
-                            <label for="home">home</label>
-                        </p>
-
-                    </a>
-
-                </div>
-
-                <div class="justify-content-center">
-                    <a href="
-                                                    ">
-                        <i class="fa-solid fa-list fa-2xl" id="home" style="color: #adb0bd;"></i>
-                        <p>
-                            <label for="home">home</label>
-                        </p>
-
-                    </a>
-
-                </div>
-
-                <div class="justify-content-center">
-                    <a href="
-                                                                    ">
-                        <i class="fa-solid fa-bars-progress fa-2xl" id="home" style="color: #adb0bd;"></i>
-                        <p>
-                            <label for="home">home</label>
-                        </p>
-
-                    </a>
-
-                </div>
-
-                <div class="justify-content-center">
-                    <a href="
-                                                                                    ">
-                        <i class="fa-solid fa-users-between-lines fa-2xl" id="home" style="color: #adb0bd;"></i>
-                        <p>
-                            <label for="home">home</label>
-                        </p>
-
-                    </a>
-
-                </div>
-
-
-            </div>
-        </div>
-    </nav>
-
-    <script src="" async defer></script>
+    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
+    <script>
+        includeHTML();
+    </script>
 
 </body>
-
-
 
 </html>
