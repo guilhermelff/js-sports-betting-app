@@ -20,90 +20,368 @@
     <div w3-include-html="nav-top.html" class="sticky-top"></div>
     <div w3-include-html="alert-element.html"></div>
 
-    <div class="vh-100">
 
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="card">
-                        <img src="caminho-da-imagem.jpg" class="card-img-top" alt="Imagem do Jogo">
-                        <div class="card-body">
-                            <h5 class="card-title">Jogo</h5>
-                            <p class="card-text">Descrição ou detalhes do jogo.</p>
-                            <div class="d-flex gap-2">
-                                <button type="button" class="btn btn-outline-success btn-selection" data-jogo="Jogo"
-                                    data-selection="vitória" data-pontuacao="5">Vitória (5 pontos)</button>
-                                <button type="button" class="btn btn-outline-warning btn-selection" data-jogo="Jogo"
-                                    data-selection="empate" data-pontuacao="3">Empate (3 pontos)</button>
-                                <button type="button" class="btn btn-outline-danger btn-selection" data-jogo="Jogo"
-                                    data-selection="derrota" data-pontuacao="1">Derrota (1 ponto)</button>
-                            </div>
-                        </div>
+
+    <section class="">
+        <div class="container py-5" id="jogos">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-sm-12 col-md-8 col-lg-6 col-xl-6">
+                    <div class="text-white text-center">
+                        <h4 class="mb-2" id="titulo">Mercado Aberto - Rodada 7</h4>
                     </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="card">
-                        <img src="caminho-da-imagem.jpg" class="card-img-top" alt="Imagem do Jogo">
-                        <div class="card-body">
-                            <h5 class="card-title">Jogo 2</h5>
-                            <p class="card-text">Descrição ou detalhes do jogo.</p>
-                            <div class="d-flex gap-2">
-                                <button type="button" class="btn btn-outline-success btn-selection" data-jogo="Jogo 2"
-                                    data-selection="vitória" data-pontuacao="5">Vitória (5 pontos)</button>
-                                <button type="button" class="btn btn-outline-warning btn-selection" data-jogo="Jogo 2"
-                                    data-selection="empate" data-pontuacao="3">Empate (3 pontos)</button>
-                                <button type="button" class="btn btn-outline-danger btn-selection" data-jogo="Jogo 2"
-                                    data-selection="derrota" data-pontuacao="1">Derrota (1 ponto)</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <div class="card" style="border-radius: 1rem;" id="card">
+
+                        <div class="card-body mt-4">
 
 
-        <div class="fixed-bottom">
-            <div class="container">
-                <div class="row" id="ficha-apostas" style="display: none;">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Ficha de Apostas</h5>
-                                <ul id="selections" class="list-group">
-                                    <!-- Seleções serão adicionadas aqui dinamicamente -->
-                                </ul>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold">Total de Pontuação:</span>
-                                    <span id="total-pontuacao">0</span>
+                            <div class="row">
+                                <div class=" mb-4">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="">
+                                                <div class="card">
+
+                                                    <div class="card-body" id="card-jogo">
+                                                        <div class="d-flex justify-content-between px-1">
+                                                            <img src="escudos/logo-barcelona-256.png"
+                                                                class="card-img-top" alt="Imagem do Jogo"
+                                                                id="logo-time">
+
+                                                            <h1 class="py-4 text-white-50">x</h1>
+
+                                                            <img src="escudos/logo-real-madrid-escudo-256.png"
+                                                                class="card-img-top" alt="Imagem do Jogo"
+                                                                id="logo-time">
+
+                                                        </div>
+
+                                                        <h5 class="card-title mt-1 text-white-50">Barcelona x Real
+                                                            Madrid</h5>
+                                                        <p class="card-text text-white-50">17/05 - La Liga - Camp Nou
+                                                        </p>
+                                                        <div class="d-flex justify-content-between gap-1">
+
+                                                            <button type="button"
+                                                                class="btn btn-selection botao-card text-white-50"
+                                                                data-jogo="Barcelona x Real Madrid"
+                                                                data-selection="Casa" data-pontuacao="5">
+
+
+
+                                                                <div id="botao-jogo">
+                                                                    <div class="d-flex justify-content-center">
+                                                                        Casa
+                                                                    </div>
+
+                                                                    <div class="d-flex justify-content-center">
+                                                                        5
+                                                                    </div>
+                                                                </div>
+                                                            </button>
+
+                                                            <button type="button"
+                                                                class="btn btn-selection botao-card text-white-50"
+                                                                data-jogo="Barcelona x Real Madrid"
+                                                                data-selection="Empate" data-pontuacao="3">
+
+
+                                                                <div id="botao-jogo">
+                                                                    <div class="d-flex justify-content-center">
+                                                                        Empate
+                                                                    </div>
+
+                                                                    <div class="d-flex justify-content-center">
+                                                                        3
+                                                                    </div>
+                                                                </div>
+                                                            </button>
+
+                                                            <button type="button"
+                                                                class="btn btn-selection botao-card text-white-50"
+                                                                data-jogo="Barcelona x Real Madrid"
+                                                                data-selection="Fora" data-pontuacao="5">
+
+
+                                                                <div id="botao-jogo">
+                                                                    <div class="d-flex justify-content-center">
+                                                                        Fora
+                                                                    </div>
+
+                                                                    <div class="d-flex justify-content-center">
+                                                                        5
+                                                                    </div>
+                                                                </div>
+                                                            </button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class=" mb-4">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="">
+                                                <div class="card">
+
+                                                    <div class="card-body" id="card-jogo">
+                                                        <div class="d-flex justify-content-between px-1">
+                                                            <img src="escudos/football-club-internazionale-milano-256.png"
+                                                                class="card-img-top" alt="Imagem do Jogo"
+                                                                id="logo-time">
+
+                                                            <h1 class="py-4 text-white-50">x</h1>
+
+                                                            <img src="escudos/associazione-calcio-milan-256.png"
+                                                                class="card-img-top" alt="Imagem do Jogo"
+                                                                id="logo-time">
+
+                                                        </div>
+
+                                                        <h5 class="card-title mt-1 text-white-50">Inter x Milan</h5>
+                                                        <p class="card-text text-white-50">17/05 - Serie A - San Siro
+                                                        </p>
+                                                        <div class="d-flex justify-content-between gap-1">
+                                                            <button type="button"
+                                                                class="btn btn-selection botao-card text-white-50"
+                                                                data-jogo="Inter x Milan" data-selection="Casa"
+                                                                data-pontuacao="5">
+
+                                                                <div id="botao-jogo">
+                                                                    <div class="d-flex justify-content-center">
+                                                                        Casa
+                                                                    </div>
+
+                                                                    <div class="d-flex justify-content-center">
+                                                                        5
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                            </button>
+                                                            <button type="button"
+                                                                class="btn btn-selection botao-card text-white-50"
+                                                                data-jogo="Inter x Milan" data-selection="Empate"
+                                                                data-pontuacao="3">
+
+
+                                                                <div id="botao-jogo">
+                                                                    <div class="d-flex justify-content-center">
+                                                                        Empate
+                                                                    </div>
+
+                                                                    <div class="d-flex justify-content-center">
+                                                                        3
+                                                                    </div>
+                                                                </div>
+
+
+
+
+                                                            </button>
+                                                            <button type="button"
+                                                                class="btn btn-selection botao-card text-white-50"
+                                                                data-jogo="Inter x Milan" data-selection="Fora"
+                                                                data-pontuacao="5">
+
+
+                                                                <div id="botao-jogo">
+                                                                    <div class="d-flex justify-content-center">
+                                                                        Fora
+                                                                    </div>
+
+                                                                    <div class="d-flex justify-content-center">
+                                                                        5
+                                                                    </div>
+                                                                </div>
+
+
+
+
+
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class=" mb-4">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="">
+                                                <div class="card">
+
+                                                    <div class="card-body" id="card-jogo">
+                                                        <div class="d-flex justify-content-between px-1">
+                                                            <img src="escudos/logo-flamengo-256.png"
+                                                                class="card-img-top" alt="Imagem do Jogo"
+                                                                id="logo-time">
+
+                                                            <h1 class="py-4 text-white-50">x</h1>
+
+                                                            <img src="escudos/logo-fluminense-256.png"
+                                                                class="card-img-top" alt="Imagem do Jogo"
+                                                                id="logo-time">
+
+                                                        </div>
+
+                                                        <h5 class="card-title mt-1 text-white-50">Flamengo x Fluminense
+                                                        </h5>
+                                                        <p class="card-text text-white-50">17/05 - Brasileirão -
+                                                            Maracanã
+                                                        </p>
+                                                        <div class="d-flex justify-content-between gap-1">
+                                                            <button type="button"
+                                                                class="btn btn-selection botao-card text-white-50"
+                                                                data-jogo="Flamengo x Fluminense" data-selection="Casa"
+                                                                data-pontuacao="5">
+
+                                                                <div id="botao-jogo">
+                                                                    <div class="d-flex justify-content-center">
+                                                                        Casa
+                                                                    </div>
+
+                                                                    <div class="d-flex justify-content-center">
+                                                                        5
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                            </button>
+                                                            <button type="button"
+                                                                class="btn btn-selection botao-card text-white-50"
+                                                                data-jogo="Flamengo x Fluminense"
+                                                                data-selection="Empate" data-pontuacao="3">
+
+
+                                                                <div id="botao-jogo">
+                                                                    <div class="d-flex justify-content-center">
+                                                                        Empate
+                                                                    </div>
+
+                                                                    <div class="d-flex justify-content-center">
+                                                                        3
+                                                                    </div>
+                                                                </div>
+
+
+
+
+                                                            </button>
+                                                            <button type="button"
+                                                                class="btn btn-selection botao-card text-white-50"
+                                                                data-jogo="Flamengo x Fluminense" data-selection="Fora"
+                                                                data-pontuacao="5">
+
+
+                                                                <div id="botao-jogo">
+                                                                    <div class="d-flex justify-content-center">
+                                                                        Fora
+                                                                    </div>
+
+                                                                    <div class="d-flex justify-content-center">
+                                                                        5
+                                                                    </div>
+                                                                </div>
+
+
+
+
+
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+    </section>
+
+
+    <div class="fixed-bottom" id="ficha-container">
+        <div class="container col-sm-10 col-md-6 col-lg-5 col-xl-5">
+            <div class="row" id="ficha-apostas" style="display: none;">
+                <div class="col">
+                    <div class="card ">
+                        <div class="card-body">
+
+                            <div class="container-fluid d-flex justify-content-between">
+                                <span class="fw-bold card-title mb-3">Ficha de Apostas</span>
+
+
+                                <button onclick="esconder()" type="button"
+                                    class="btn fa-solid fa-caret-down fa-xl mb-3 px-3" id="minimizar"
+                                    data-bs-toggle="collapse" data-bs-target="#selections" aria-expanded="true">
+                                </button>
+
+                                <button onclick="mostrar()" type="button"
+                                    class="btn fa-solid fa-caret-up fa-xl mb-3 px-3" id="expandir"
+                                    data-bs-toggle="collapse" data-bs-target="#selections" aria-expanded="false"
+                                    style="display: none;">
+                                </button>
+
+
+                            </div>
+
+
+                            <ul id="selections" class="list-group collapse show mb-3">
+                                <!-- Seleções serão adicionadas aqui dinamicamente -->
+                            </ul>
+                            <div class="container-fluid d-flex justify-content-between align-items-center">
+
+                                <span id="total-ficha">
+                                    <span class="fw-bold">Total :</span>
+                                    <span class="" id="total-pontuacao">
+                                        0
+                                    </span>
+
+                                </span>
+
+                                <button type="button" class="btn btn-success btn-outline-light fw-bold"
+                                    id="botao-aposta" data-bs-toggle="modal"
+                                    data-bs-target="#modal-aposta">Apostar</button>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
 
 
-
+    <div w3-include-html="aposta-feita-element.html"></div>
     <div w3-include-html="nav-bottom.html" class="sticky-bottom ativo-home-icon ativo-home-sub"></div>
 
 
 
-
-
-
-
-
     <script src="script.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
@@ -124,18 +402,36 @@
                 var selecao = this.getAttribute('data-selection');
                 var pontuacao = parseInt(this.getAttribute('data-pontuacao'));
 
-                // Verificar se já existe uma seleção para o jogo atual
+                // Verificar se o botão está marcado com "btn-success"
+                var isButtonSelected = this.classList.contains('btn-success');
+
+                // Verificar se já existe uma seleção para o jogo atual dentro da ficha de apostas
                 var existingSelection = Array.from(selectionsContainer.getElementsByClassName('selection')).find(function (selection) {
                     return selection.getAttribute('data-jogo') === jogo;
                 });
 
-                // Se já existe uma seleção, substituir
-                if (existingSelection) {
-                    var existingPontuacao = parseInt(existingSelection.getAttribute('data-pontuacao'));
-                    existingSelection.setAttribute('data-selection', selecao);
-                    existingSelection.setAttribute('data-pontuacao', pontuacao);
-                    existingSelection.querySelector('.selection-text').innerHTML = `<strong>${jogo}</strong>: ${selecao} (Pontuação: ${pontuacao})`;
+                // Remover a seleção do botão marcado com "btn-success"
+                if (isButtonSelected) {
+                    this.classList.remove('btn-success', 'btn-outline-light');
+                    // Remover a seleção do jogo atual da ficha de apostas
+                    if (existingSelection) {
+                        existingSelection.remove();
+                    }
                 } else {
+                    // Remover a seleção de qualquer outro botão do mesmo jogo na ficha de apostas
+                    Array.from(selectionsContainer.getElementsByClassName('selection')).forEach(function (selection) {
+                        if (selection.getAttribute('data-jogo') === jogo) {
+                            selection.remove();
+                            // Remover as classes "btn-success" e "btn-outline-light" do botão correspondente dentro do jogo
+                            var correspondingButton = Array.from(btnSelections).find(function (button) {
+                                return button.getAttribute('data-jogo') === jogo && button.getAttribute('data-selection') === selection.getAttribute('data-selection');
+                            });
+                            if (correspondingButton) {
+                                correspondingButton.classList.remove('btn-success', 'btn-outline-light');
+                            }
+                        }
+                    });
+
                     // Criar elemento da seleção
                     var li = document.createElement('li');
                     li.className = 'list-group-item selection';
@@ -143,16 +439,33 @@
                     li.setAttribute('data-selection', selecao);
                     li.setAttribute('data-pontuacao', pontuacao);
                     li.innerHTML = `
-              <div class="d-flex justify-content-between">
-                <span class="selection-text"><strong>${jogo}</strong>: ${selecao} (Pontuação: ${pontuacao})</span>
-                <button type="button" class="btn btn-danger btn-remove">&times;</button>
-              </div>
-            `;
+                        <div class="d-flex justify-content-between" id="jogo-ficha">
+                            <span class="">
+                                ${jogo}
+                            </span>
+                            <div class="d-flex">
+                                <div class="selection-text">
+                                    <span>
+                                        ${selecao} @ ${pontuacao}
+                                    </span>
+                                </div>
+                                <button type="button" class="btn btn-remove fa-solid fa-xmark" id="deletar"></button>
+                            </div>
+                        </div>
+                    `;
 
                     // Adicionar evento de remoção
                     var btnRemove = li.querySelector('.btn-remove');
                     btnRemove.addEventListener('click', function () {
                         li.remove();
+
+                        // Remover as classes "btn-success" e "btn-outline-light" do botão correspondente dentro do jogo
+                        var correspondingButton = Array.from(btnSelections).find(function (button) {
+                            return button.getAttribute('data-jogo') === jogo && button.getAttribute('data-selection') === selecao;
+                        });
+                        if (correspondingButton) {
+                            correspondingButton.classList.remove('btn-success', 'btn-outline-light');
+                        }
 
                         // Atualizar somatório da pontuação
                         var remainingPontuacao = Array.from(selectionsContainer.getElementsByClassName('selection')).reduce(function (acc, selection) {
@@ -168,6 +481,16 @@
 
                     // Adicionar seleção à ficha de apostas
                     selectionsContainer.appendChild(li);
+
+                    // Remover as classes "btn-success" e "btn-outline-light" de todos os botões do mesmo jogo
+                    Array.from(btnSelections).forEach(function (button) {
+                        if (button.getAttribute('data-jogo') === jogo) {
+                            button.classList.remove('btn-success', 'btn-outline-light');
+                        }
+                    });
+
+                    // Adicionar as classes "btn-success" e "btn-outline-light" somente ao botão clicado
+                    this.classList.add('btn-success', 'btn-outline-light');
                 }
 
                 // Atualizar somatório da pontuação
@@ -177,10 +500,45 @@
                 totalPontuacaoContainer.textContent = newPontuacao;
 
                 // Exibir a ficha de apostas
-                fichaContainer.style.display = 'block';
+                fichaContainer.style.display = selectionsContainer.childElementCount > 0 ? 'block' : 'none';
             });
         });
+
+        var btnAposta = document.getElementById('botao-aposta');
+
+
+        btnAposta.addEventListener('click', function () {
+            // Remover todas as seleções da ficha de apostas
+            while (selectionsContainer.firstChild) {
+                selectionsContainer.removeChild(selectionsContainer.firstChild);
+            }
+
+            // Remover as classes "btn-success" e "btn-outline-light" de todos os botões
+            Array.from(btnSelections).forEach(function (button) {
+                button.classList.remove('btn-success', 'btn-outline-light');
+            });
+
+            // Zerar a pontuação total
+            totalPontuacaoContainer.textContent = '0';
+
+            // Ocultar a ficha de apostas
+            fichaContainer.style.display = 'none';
+
+        });
+
     </script>
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 
 

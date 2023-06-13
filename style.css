@@ -26,6 +26,7 @@ body {
 
 #testeverde {
     background-color:  green;
+    color: green
     
 }
 
@@ -67,10 +68,69 @@ body {
     background-color:  #394867;
 }
 
-.btn:hover {
-    background-color:  #6985bd;
+#botao-jogo{
+    font-weight: 600;
+    font-size: 14px;
+    width: 40px;
+    
+    
+    
+    
 }
 
+.botao-card {
+    background-color: #536283;
+    
+}
+
+.btn:hover {
+    background-color:  #6985bd;
+    
+}
+
+.btn:hover i{
+    color: white;
+    
+}
+
+.btn:selection {
+    background-color: green;
+}
+
+.btn:hover #botao-jogo{
+    color: white;
+    
+}
+
+.btn-success {
+    background-color:  #6985bd;
+    color: white;
+    outline-color: white;
+
+}
+
+.btn-success #botao-jogo{
+    color: white;
+    outline-color: white;
+
+}
+
+#controle-botao{
+    display: none;
+}
+
+#controle-botao:checked{
+    display: block;
+}
+
+#botao-jogo:checked{
+    background-color: green;
+    
+}
+
+#titulo {
+    font-size: 18px;
+}
 
 
 p a:hover {
@@ -81,9 +141,6 @@ p a {
     color: rgb(152, 158, 170)
 }
 
-i:hover {
-    color:  rgb(186, 193, 207);
-}
 
 .sub-menu a  {
     color: rgb(152, 158, 170);
@@ -142,6 +199,7 @@ i:hover {
 
 #nav {
   background-color: #2F3C55;
+  
 }
 
 .chip{
@@ -192,6 +250,80 @@ i {
 }
 
 
-#ficha-apostas {
+#ficha-container {
     margin-bottom: 100px;
+}
+
+#jogos {
+    margin-bottom: 275px;
+}
+
+#minimizar {
+    background-color: white;
+}
+
+#minimizar:hover {
+    color :#838383;
+}
+
+#expandir {
+    background-color: white;
+}
+
+#expandir:hover {
+    color :#838383;
+}
+
+
+
+#deletar {
+    background-color: white;
+    color: #ffa6a6;
+    padding-right: 13px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    
+}
+
+#jogo-ficha:hover #deletar{
+    color : #FF5252;
+}
+
+
+#total-ficha {
+    padding-right: 45px;
+}
+
+#logo-time {
+    width: 96px;
+    height: auto;
+    min-width: 75px;
+    
+    
+}
+
+#card-jogo{
+    background-color:  #394867
+}
+
+#card-jogo:hover{
+    background-color:  #3a4a69
+}
+
+#botao-aposta {
+    background-color : #67c894;
+    color: black;
+    margin-right: 14px;
+    font-size: 12px;
+    
+}
+
+#botao-aposta:hover{
+    background-color : #356b4e;
+    color: white;
+    
+}
+
+#selections {
+    font-size: 12px;
 }

@@ -57,3 +57,14 @@ const myInput = document.getElementById('myInput')
 myModal.addEventListener('shown.bs.modal', () => {
     myInput.focus()
 })
+
+function esconder() {
+    document.getElementById('minimizar').style.display = 'none';
+    document.getElementById('expandir').style.display = 'block';
+}
+
+function mostrar() {
+    document.getElementById('minimizar').style.display = 'block';
+    document.getElementById('expandir').style.display = 'none';
+}
+
