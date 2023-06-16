@@ -1,3 +1,21 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Palpiteiro</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+
+
+
+
 <nav class="navbar" id="nav">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.html">
@@ -5,13 +23,23 @@
         </a>
 
 
+
+
+
+
         <div class=" d-inline-flex" id="">
 
-            <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                    class="py-3 px-1 mt-1 fa-solid fa-bell fa-lg"></i></button>
+
+            <button onclick="location.href='apostas-feitas.html'" class="btn btn-nav-top" id="botao-apostas-feitas"><i
+                    class="py-3 px-1 fa-solid fa-receipt fa-lg "></i></button>
+
+
+
+            <button class="btn btn-nav-top" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                    class="py-3 px-1 fa-solid fa-bell fa-lg"></i></button>
 
             <p class="mt-3 mb-3 h5 espaco"> - </p>
-            <p class="mt-3 mb-3 h5 text-white-50">54p </p>
+            <p class="mt-3 mb-3 h5 text-white-50">54</p>
             <p class="mt-3 mb-3 h5 espaco"> - </p>
             <p class="mt-3 mb-3 h5" id="green">7</p>
             <p class="mt-3 mb-3 h5 espaco"> - </p>
@@ -22,5 +50,39 @@
                     class="rounded-circle" style="width: 40px;" height="40px" />
             </a>
         </div>
+    </div>
+</nav>
+
+<nav class="navbar" id="nav-login">
+    <div class="container-fluid">
+
+
+
+
+        <div></div>
+
+
+
+
+        <div class="d-inline-flex gap-1">
+            <div class="">
+                <a href="login.html">
+                    <button class="btn text-white-50" id="botao-login">
+                        <span>Login</span>
+                    </button>
+                </a>
+            </div>
+
+            <div class="">
+                <a href="registro.html">
+                    <button class="btn text-white-50" id="botao-login">
+                        <span>Registrar-se</span>
+                    </button>
+                </a>
+            </div>
+        </div>
+
+
+
     </div>
 </nav>

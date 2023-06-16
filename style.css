@@ -72,10 +72,26 @@ body {
     font-weight: 600;
     font-size: 14px;
     width: 40px;
+}
+
+#botao-login{
+    font-weight: 600;
+    font-size: 9px;
+    width: 85px;
     
-    
-    
-    
+}
+
+#login {
+    height: 40px;
+    background-color: red;
+}
+
+#botao-login:hover span{
+    color: white;
+}
+
+#texto-nav {
+    font-size: 12px;
 }
 
 .botao-card {
@@ -86,6 +102,14 @@ body {
 .btn:hover {
     background-color:  #6985bd;
     
+}
+
+.apostas-ativo #botao-apostas-feitas {
+    background-color:  #6985bd;
+}
+
+.apostas-ativo #botao-apostas-feitas i{
+     color: white;
 }
 
 .btn:hover i{
@@ -202,6 +226,12 @@ p a {
   
 }
 
+#nav-login {
+  background-color: #32405a;
+  height: 47px;
+  
+}
+
 .chip{
 	padding: 8px 10px;
 	border-radius: 10px;
@@ -307,7 +337,7 @@ i {
 }
 
 #card-jogo:hover{
-    background-color:  #3a4a69
+    background-color:  #3d4d6e
 }
 
 #botao-aposta {
@@ -327,3 +357,116 @@ i {
 #selections {
     font-size: 12px;
 }
+
+
+
+
+
+
+
+
+
+
+
+#select-jogador-1 {
+
+            font-size: 10px;
+           
+            background-color: #536283;
+            border: none;
+            border-radius: 4px;
+            
+            width: 125px;
+
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+        }
+
+        #select-jogador option {
+            background-color: #394867;
+        }
+
+#select-jogador-2 {
+
+            font-size: 10px;
+           
+            background-color: #536283;
+            border: none;
+            border-radius: 4px;
+            
+            width: 125px;
+
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+        }
+
+        #select-jogador option {
+            background-color: #394867;
+        }
+
+#select-jogador-label {
+    font-size: 10px;
+}
+
+
+
+#botao-apostas-feitas {
+    margin-right: 6px;
+}
+
+.btn-nav-top {
+    width: 60px;
+}
+
+
+
+
+
+
+.ticket {
+	 position: relative;
+	 box-sizing: border-box;
+	 width: 300px;
+	 height: 450px;
+	 margin: 150px auto 0;
+	 padding: 20px;
+	 border-radius: 10px;
+	 background: #fbfbfb;
+	 box-shadow: 2px 2px 15px 0px #ab9b0d;
+}
+ .ticket:before, .ticket:after {
+	 content: '';
+	 position: absolute;
+	 left: 5px;
+	 height: 6px;
+	 width: 290px;
+}
+ .ticket:before {
+	 top: -5px;
+	 background: radial-gradient(circle, transparent, transparent 50%, #fbfbfb 50%, #fbfbfb 100%) -7px -8px / 16px 16px repeat-x;
+}
+ .ticket:after {
+	 bottom: -5px;
+	 background: radial-gradient(circle, transparent, transparent 50%, #fbfbfb 50%, #fbfbfb 100%) -7px -2px / 16px 16px repeat-x;
+}
+ .ticket__content {
+	 box-sizing: border-box;
+	 height: 100%;
+	 width: 100%;
+	 border: 6px solid #d8d8d8;
+}
+ .ticket__text {
+	 width: 400px;
+	 font-family: 'Helvetica', 'Arial', sans-serif;
+	 font-size: 3rem;
+	 font-weight: 900;
+	 text-transform: uppercase;
+	 color: #c6dede;
+	 transform: translate(-25px, 25px) rotate(-55deg);
+}
+ 
+        
