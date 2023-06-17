@@ -125,7 +125,8 @@
                                                                 </span>
                                                                 <select id="select-jogador-1"
                                                                     class="form-select text-white-50">
-                                                                    <option class="btn-selection" data-jogo="vazio"
+                                                                    <option class="btn-selection"
+                                                                        data-jogo="Barcelona x Real Madrid"
                                                                         data-selection="vazio" data-pontuacao="0">
                                                                         Jogador</option>
                                                                     <optgroup label="Time 1">
@@ -165,7 +166,8 @@
                                                                 </div>
                                                                 <select id="select-jogador-2"
                                                                     class="form-select text-white-50">
-                                                                    <option class="btn-selection" data-jogo="vazio"
+                                                                    <option class="btn-selection"
+                                                                        data-jogo="Barcelona x Real Madrid"
                                                                         data-selection="vazio" data-pontuacao="0">
                                                                         Jogador</option>
                                                                     <optgroup label="Time 1">
@@ -797,28 +799,39 @@
         // Função para adicionar a seleção na ficha de apostas
         function addSelectionToBet(jogo, selecao, pontuacao) {
             // Criar elemento da seleção
+
+
+
+
+
             var li = document.createElement('li');
             li.className = 'list-group-item selection';
             li.setAttribute('data-jogo', jogo);
             li.setAttribute('data-selection', selecao);
             li.setAttribute('data-pontuacao', pontuacao);
             li.innerHTML = `
-      <div class="d-flex justify-content-between" id="jogo-ficha">
-        <span class="">${jogo}</span>
-        <div class="d-flex">
-          <div class="selection-text">
-            <span>${selecao} @ ${pontuacao}</span>
-          </div>
-          <button type="button" class="btn btn-remove fa-solid fa-xmark" id="deletar"></button>
+    <div class="d-flex justify-content-between" id="jogo-ficha">
+      <span class="">${jogo}</span>
+      <div class="d-flex">
+        <div class="selection-text">
+          <span>${selecao} @ ${pontuacao}</span>
         </div>
+        <button type="button" class="btn btn-remove fa-solid fa-xmark" id="deletar"></button>
       </div>
-    `;
+    </div>
+  `;
 
             // Adicionar evento de remoção
             var btnRemove = li.querySelector('.btn-remove');
             btnRemove.addEventListener('click', function () {
+
+
+
                 var selectionPontuacao = parseInt(li.getAttribute('data-pontuacao'));
                 li.remove();
+
+
+
 
                 // Atualizar somatório da pontuação
                 totalPontuacao -= selectionPontuacao;
@@ -828,6 +841,7 @@
                 if (selectionsContainer.childElementCount === 0) {
                     fichaContainer.style.display = 'none';
                 }
+
             });
 
             // Adicionar seleção à ficha de apostas
@@ -918,6 +932,7 @@
             });
         });
 
+
         var btnAposta = document.getElementById('botao-aposta');
 
         btnAposta.addEventListener('click', function () {
@@ -955,11 +970,11 @@
             var selectsJogador2 = document.querySelectorAll('[id^="select-jogador-2"]');
 
             selectsJogador1.forEach(function (select) {
-                select.querySelector('option[data-jogo="vazio"]').selected = true;
+                select.querySelector('option[data-selection="vazio"]').selected = true;
             });
 
             selectsJogador2.forEach(function (select) {
-                select.querySelector('option[data-jogo="vazio"]').selected = true;
+                select.querySelector('option[data-selection="vazio"]').selected = true;
             });
 
 
