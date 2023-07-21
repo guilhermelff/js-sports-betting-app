@@ -68,3 +68,8 @@ function mostrar() {
     document.getElementById('expandir').style.display = 'none';
 }
 
+
+import { createClient } from '@supabase/supabase-js'
+
+// Create a single supabase client for interacting with your database
+const supabase = createClient('https://qmkgsptmjfsyocbglppl.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFta2dzcHRtamZzeW9jYmdscHBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg1NjQ2NjksImV4cCI6MjAwNDE0MDY2OX0.0b0azCaqSYJR8qi3o5lglzjRAoPEDH11ALL3OHaSsgk')
