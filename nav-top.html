@@ -33,22 +33,29 @@
             <button onclick="location.href='apostas-feitas.html'" class="btn btn-nav-top" id="botao-apostas-feitas"><i
                     class="py-3 px-1 fa-solid fa-receipt fa-lg "></i></button>
 
-
-
-            <button class="btn btn-nav-top" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+            <button class="btn btn-nav-top" data-bs-toggle="modal" data-bs-target="#exampleModal" id="botao-alertas"><i
                     class="py-3 px-1 fa-solid fa-bell fa-lg"></i></button>
 
+
+            <!--pontos greens reds-->
             <p class="mt-3 mb-3 h5 espaco"> - </p>
-            <p class="mt-3 mb-3 h5 text-white-50">54</p>
+            <p class="mt-3 mb-3 h5 text-white-50" id="pontos-usuario-nav" style="display: none">54</p>
             <p class="mt-3 mb-3 h5 espaco"> - </p>
-            <p class="mt-3 mb-3 h5" id="green">7</p>
+            <p class="mt-3 mb-3 h5" id="greens-usuario-nav" style="display: none">7</p>
             <p class="mt-3 mb-3 h5 espaco"> - </p>
-            <p class="mt-3 mb-3 h5" id="red">2</p>
+            <p class="mt-3 mb-3 h5" id="reds-usuario-nav" style="display: none">2</p>
             <p class="mt-3 mb-3 h5 espaco"> - </p>
-            <a href="perfil.html" class="mt-2 mb-2">
+
+            <!--foto de perfil-->
+            <a href="perfil.html" class="mt-2 mb-2" style="display: none" id="foto-perfil-nav">
                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
                     class="rounded-circle" style="width: 40px;" height="40px" />
             </a>
+
+            <a href="login.html" class="mt-3" id="usuario-nav" style="display: none">
+                <i class="fa-solid fa-circle-user fa-2xl"></i>
+            </a>
+
         </div>
     </div>
 </nav>

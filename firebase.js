@@ -24,18 +24,41 @@ const db = getFirestore(app);
 
 //keep track of user logged in or out
 onAuthStateChanged(auth, (user) => {
+
+    //elementos que aparecem para usuarios logados
+    const ligasIcone = document.getElementById("link-ligas-icone");
+    const ligasTexto = document.getElementById("link-ligas-texto");
+    const minhasLigas = document.getElementById("minhas-ligas");
+    const amigosIcone = document.getElementById("link-amigos-icone");
+    const amigosTexto = document.getElementById("link-amigos-texto");
+    const meusAmigos = document.getElementById("meus-amigos");
+    const botaoApostasFeitas = document.getElementById("botao-apostas-feitas");
+    const apostasFeitas = document.getElementById("apostas-feitas");
+    const botaoAlertas = document.getElementById("botao-alertas");
+    const pontosNav = document.getElementById("pontos-usuario-nav");
+    const greensNav = document.getElementById("greens-usuario-nav");
+    const redsNav = document.getElementById("reds-usuario-nav");
+    const fotoNav = document.getElementById("foto-perfil-nav");
+    const usuarioNav = document.getElementById("usuario-nav");
+
+    //usuario logou
     if (user) {
-        if (document.getElementById("apostas-feitas") != null) {
-            document.getElementById("apostas-feitas").style.display = "block";
-        }
-        if (document.getElementById("minhas-ligas") != null) {
-            document.getElementById("minhas-ligas").style.display = "block";
-        }
-        if (document.getElementById("meus-amigos") != null) {
-            document.getElementById("meus-amigos").style.display = "block";
-        }
 
+        //mostra dados de usuario
+        pontosNav.style.display = "block";
+        greensNav.style.display = "block";
+        redsNav.style.display = "block";
+        fotoNav.style.display = "block";
 
+        if (apostasFeitas != null) {
+            apostasFeitas.style.display = "block";
+        }
+        if (minhasLigas != null) {
+            minhasLigas.style.display = "block";
+        }
+        if (meusAmigos != null) {
+            meusAmigos.style.display = "block";
+        }
 
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
@@ -43,9 +66,44 @@ onAuthStateChanged(auth, (user) => {
         const uid = user.uid;
         // ...
 
-    } else {
+    }
+
+    //usuario nao esta logado
+    else {
+
+        //mostra barra de login
         document.getElementById("nav-login").style.display = "block";
-        // User is signed out
+
+        //mostra icones genericos
+        usuarioNav.style.display = "block";
+
+        // redireciona paginas com dados de usuario para o login
+        ligasIcone.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'login.html';
+        });
+        ligasTexto.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'login.html';
+        });
+        amigosIcone.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'login.html';
+        });
+        amigosTexto.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'login.html';
+        });
+        botaoApostasFeitas.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'login.html';
+        });
+        botaoAlertas.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'login.html';
+        });
+
+
         console.log("User is not signed");
     }
 });
