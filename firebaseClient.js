@@ -1,7 +1,6 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js'
 // Add Firebase products that you want to use
-import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js'
-import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js'
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js'
+import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js'
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js'
 
 //dados do banco
@@ -23,20 +22,75 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
 
-//signup
-const formRegistro = document.querySelector('#form-registro');
-formRegistro.addEventListener('submit', (e) => {
-    e.preventDefault();
+//keep track of user logged in or out
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        console.log(user);
+        const uid = user.uid;
+        // ...
+    } else {
+        // User is signed out
+        console.log("User is not signed");
+    }
+});
 
-    //dados usuario
-    const email = formRegistro['emailPerfil'].value;
-    const senha = formRegistro['senhaPerfil'].value;
+//signup and login
+if (document.querySelector('#form-registro') != null) {
 
-    // sign up usuario
-    createUserWithEmailAndPassword(auth, email, senha)
-        .then((cred) => {
-            console.log(cred);
-            formRegistro.reset();
+    const formRegistro = document.querySelector('#form-registro');
+
+    formRegistro.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        //dados usuario
+        const email = formRegistro['emailPerfil'].value;
+        const senha = formRegistro['senhaPerfil'].value;
+
+        // sign up and login usuario
+        createUserWithEmailAndPassword(auth, email, senha)
+            .then((cred) => {
+                formRegistro.reset();
+                window.location.href = 'index.html';
+            })
+    })
+}
+
+//logout
+if (document.querySelector('#form-logout') != null) {
+
+    const logoutButton = document.querySelector('#form-logout');
+
+    logoutButton.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        //logout usuario
+        signOut(auth).then(() => {
             window.location.href = 'index.html';
-        })
-})
+        }).catch((error) => {
+            console.log(error);
+        });
+    })
+}
+
+//login
+if (document.querySelector('#form-login') != null) {
+
+    const formLogin = document.querySelector('#form-login');
+
+    formLogin.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        //dados usuario
+        const login = formLogin['loginPerfil'].value;
+        const senha = formLogin['loginSenhaPerfil'].value;
+
+        //login usuario
+        signInWithEmailAndPassword(auth, login, senha)
+            .then((cred) => {
+                formLogin.reset();
+                window.location.href = 'index.html';
+            })
+    })
+}
