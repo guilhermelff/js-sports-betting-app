@@ -1,7 +1,7 @@
 // Add Firebase products that you want to use
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js'
 import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js'
-import { getFirestore, collection, getDocs, setDoc, doc } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js'
+import { getFirestore, collection, getDocs, setDoc, doc, collectionGroup, query, where } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js'
 
 //dados do banco
 const firebaseConfig = {
@@ -167,18 +167,45 @@ if (document.querySelector('#form-registro') != null) {
     })
 }
 
-//puxar os dados
-const querySnapshot = await getDocs(collection(db, "Rodadas", "1", "Jogos"));
+//puxar os dados jogos da rodada
+const jogosQuery = query(collectionGroup(db, "Jogos"));
+const jogos = await getDocs(jogosQuery);
+
+const jogoss = await getDocs(collection(db, "Rodadas", "1", "Jogos"));
+
+//puxar dados das rodadas
+const rodadas = await getDocs(collection(db, "Rodadas"));
+
+//puxar dados dos jogadores de cada time
+const times = await getDocs(collection(db, "Times"));
+const jogadoresQuery = query(collectionGroup(db, "Jogadores"));
+const jogadores = await getDocs(jogadoresQuery);
+
 
 //div jogos da rodada
 const jogosRodada = document.getElementById("jogos-rodada");
 
-//montar cada card de jogo
-let html = '';
-querySnapshot.forEach((doc) => {
-    console.log(doc.id, " => ", doc.data());
-    const jogo = doc.data();
-    const card = `
+//div mercado aberto ou fechado
+const mercado = document.getElementById("titulo");
+
+rodadas.forEach((doc) => {
+
+    //dados rodada
+    const rodada = doc.data();
+
+    if (rodada.abertaFechada == true) {
+        mercado.innerHTML = `Mercado Aberto - Rodada ${rodada.numero}`;
+
+        //montar cada card de jogo
+        let html = '';
+        jogos.forEach((doc) => {
+
+            //dados jogo
+            const jogo = doc.data();
+
+            if (jogo.rodada == rodada.numero) {
+                //peças do card
+                var cardJogo1 = `
         <div class="row">
                                     <div class=" mb-4">
                                         <div class="container">
@@ -251,6 +278,9 @@ querySnapshot.forEach((doc) => {
                                                                 </button>
 
                                                             </div>
+    `;
+
+                var cardJogadores2 = `
 
                                                             <div class="d-flex justify-content-between">
 
@@ -264,95 +294,155 @@ querySnapshot.forEach((doc) => {
                                                                             data-jogo="${jogo.casa} x ${jogo.fora}"
                                                                             data-selection="vazio" data-pontuacao="0">
                                                                             Jogador</option>
+
                                                                         <optgroup label="${jogo.casa}">
-                                                                            <option class="btn-selection"
-                                                                                data-jogo="${jogo.casa} x ${jogo.fora}"
-                                                                                data-selection="Gol - Jogador 1 - ${jogo.casa}"
-                                                                                data-pontuacao="4">Jogador 1 - ${jogo.casa}
-                                                                            </option>
-                                                                            <option class="btn-selection"
-                                                                                data-jogo="${jogo.casa} x ${jogo.fora}"
-                                                                                data-selection="Gol - Jogador 2 - ${jogo.casa}"
-                                                                                data-pontuacao="3">Jogador 2 - ${jogo.casa}
-                                                                            </option>
-                                                                        </optgroup>
-                                                                        <optgroup label="${jogo.fora}">
-                                                                            <option class="btn-selection"
-                                                                                data-jogo="${jogo.casa} x ${jogo.fora}"
-                                                                                data-selection="Gol - Jogador 1 - ${jogo.fora}"
-                                                                                data-pontuacao="4">Jogador 1 - ${jogo.fora}
-                                                                            </option>
-                                                                            <option class="btn-selection"
-                                                                                data-jogo="${jogo.casa} x ${jogo.fora}"
-                                                                                data-selection="Gol - Jogador 2 - ${jogo.fora}"
-                                                                                data-pontuacao="3">Jogador 2 - ${jogo.fora}
-                                                                            </option>
-                                                                        </optgroup>
-                                                                    </select>
-                                                                </div>
-
-
-                                                                <div class=" mt-3">
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div></div>
-                                                                        <span class="card-text text-white-50 px-1"
-                                                                            id="select-jogador-label">Cartão
-                                                                        </span>
-                                                                    </div>
-                                                                    <select id="select-jogador-2"
-                                                                        class="form-select text-white-50">
-                                                                        <option class="btn-selection"
-                                                                            data-jogo="${jogo.casa} x ${jogo.fora}"
-                                                                            data-selection="vazio" data-pontuacao="0">
-                                                                            Jogador</option>
-                                                                        <optgroup label="${jogo.casa}">
-                                                                            <option data-jogo="${jogo.casa} x ${jogo.fora}"
-                                                                                data-selection="Cartão - Jogador 1 - ${jogo.casa}"
-                                                                                data-pontuacao="4">
-                                                                                Jogador 1 - ${jogo.casa}
-                                                                            </option>
-                                                                            <option data-jogo="${jogo.casa} x ${jogo.fora}"
-                                                                                data-selection="Cartão - Jogador 2 - ${jogo.casa}"
-                                                                                data-pontuacao="3">
-                                                                                Jogador 2 - ${jogo.casa}
-                                                                            </option>
-                                                                        </optgroup>
-
-                                                                        <optgroup label="${jogo.fora}">
-                                                                            <option data-jogo="${jogo.casa} x ${jogo.fora}"
-                                                                                data-selection="Cartão - Jogador 1 - ${jogo.fora}"
-                                                                                data-pontuacao="4">
-                                                                                Jogador 1 - ${jogo.fora}
-                                                                            </option>
-                                                                            <option data-jogo="${jogo.casa} x ${jogo.fora}"
-                                                                                data-selection="Cartão - Jogador 2 - ${jogo.fora}"
-                                                                                data-pontuacao="3">
-                                                                                Jogador 2 - ${jogo.fora}
-                                                                            </option>
-                                                                        </optgroup>
-                                                                    </select>
-                                                                </div>
-
-
-
-
-
-                                                            </div>
-
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
     `;
-    html += card;
+
+                var cardJogadoresGolCasaTodos3 = ``;
+
+                var cardJogadores4 = `
+        </optgroup >
+        <optgroup label="${jogo.fora}">
+    `;
+
+                var cardJogadoresGolForaTodos5 = ``;
+
+                var cardJogadores6 = `
+        </optgroup >
+                                                                    </select >
+                                                                </div >
+
+
+        <div class=" mt-3">
+            <div class="d-flex justify-content-between">
+                <div></div>
+                <span class="card-text text-white-50 px-1"
+                    id="select-jogador-label">Cartão
+                </span>
+            </div>
+            <select id="select-jogador-2"
+                class="form-select text-white-50">
+                <option class="btn-selection"
+                    data-jogo="${jogo.casa} x ${jogo.fora}"
+                    data-selection="vazio" data-pontuacao="0">
+                    Jogador</option>
+                <optgroup label="${jogo.casa}">
+    `;
+
+                var cardJogadoresCartaoCasaTodos7 = ``;
+
+                var cardJogadores8 = `
+                </optgroup >
+
+        <optgroup label="${jogo.fora}">
+    `;
+
+                var cardJogadoresCartaoForaTodos9 = ``;
+
+                var cardJogadores10 = `
+         </optgroup>
+            </select >
+        </div >
+
+
+
+
+
+                                                            </div >
+
+
+                                                        </div >
+                                                    </div >
+                                                </div >
+                                            </div >
+                                        </div >
+                                    </div >
+                                </div >
+    `;
+
+                //iterar pelos jogadores
+                jogadores.forEach((doc) => {
+                    //dados dos jogadores
+                    const jogador = doc.data();
+
+                    //adiciona seleções de gol e cartão para jogadores do time da casa
+                    if (jogo.casa == jogador.time) {
+                        //montar card de jogadores
+                        var cardJogadoresGolCasaUnico = `
+                                                                            <option class="btn-selection"
+                                                                                data-jogo="${jogo.casa} x ${jogo.fora}"
+                                                                                data-selection="Gol - ${jogador.nome} - ${jogo.casa}"
+                                                                                data-pontuacao="${jogador.pontosGol}">${jogador.nome} : ${jogador.pontosGol}
+                                                                            </option>
+    
+            `;
+                        cardJogadoresGolCasaTodos3 += cardJogadoresGolCasaUnico;
+
+                        var cardJogadoresCartaoCasaUnico = `
+                    <option data-jogo="${jogo.casa} x ${jogo.fora}"
+                        data-selection="Cartão - ${jogador.nome} - ${jogo.casa}"
+                        data-pontuacao="${jogador.pontosCartao}">
+                        ${jogador.nome} : ${jogador.pontosCartao}
+                    </option>
+            `;
+                        cardJogadoresCartaoCasaTodos7 += cardJogadoresCartaoCasaUnico;
+                    }
+
+                    //adiciona seleções de gol e cartão para jogadores do time de fora
+                    if (jogo.fora == jogador.time) {
+                        //montar card de jogadores
+                        var cardJogadoresGolForaUnico = `
+                                                                            <option class="btn-selection"
+                                                                                data-jogo="${jogo.casa} x ${jogo.fora}"
+                                                                                data-selection="Gol - ${jogador.nome} - ${jogo.fora}"
+                                                                                data-pontuacao="${jogador.pontosGol}">${jogador.nome} : ${jogador.pontosGol}
+                                                                            </option>
+    
+            `;
+                        cardJogadoresGolForaTodos5 += cardJogadoresGolForaUnico;
+
+                        var cardJogadoresCartaoForaUnico = `    
+            <option data-jogo="${jogo.casa} x ${jogo.fora}"
+                data-selection="Cartão - ${jogador.nome} - ${jogo.fora}"
+                data-pontuacao="${jogador.pontosCartao}">
+                ${jogador.nome} : ${jogador.pontosCartao}
+            </option>
+            `;
+                        cardJogadoresCartaoForaTodos9 += cardJogadoresCartaoForaUnico;
+                    }
+                })
+
+                //monta as peças do card
+                let card = ``;
+                card += cardJogo1;
+                card += cardJogadores2;
+                card += cardJogadoresGolCasaTodos3;
+                card += cardJogadores4;
+                card += cardJogadoresGolForaTodos5;
+                card += cardJogadores6;
+                card += cardJogadoresCartaoCasaTodos7;
+                card += cardJogadores8;
+                card += cardJogadoresCartaoForaTodos9;
+                card += cardJogadores10;
+
+                //adiciona card à página
+                html += card;
+
+            }
+
+
+        });
+
+        //adicionar cards a div de jogos da rodada
+        jogosRodada.innerHTML = html;
+    }
+
+
+
+
 });
 
-//adicionar cards a div de jogos da rodada
-jogosRodada.innerHTML = html;
+
 
 
 
@@ -461,7 +551,7 @@ Array.from(btnSelections).forEach(function (btn) {
             li.setAttribute('data-selection', selecao);
             li.setAttribute('data-pontuacao', pontuacao);
             li.innerHTML = `
-        <div class="d-flex justify-content-between" id="jogo-ficha">
+        <div class="d-flex justify-content-between" id = "jogo-ficha">
           <span class="">${jogo}</span>
           <div class="d-flex">
             <div class="selection-text">
@@ -470,7 +560,7 @@ Array.from(btnSelections).forEach(function (btn) {
             <button type="button" class="btn btn-remove fa-solid fa-xmark" id="deletar"></button>
           </div>
         </div>
-      `;
+        `;
 
             // Adicionar evento de remoção
             var btnRemove = li.querySelector('.btn-remove');
@@ -530,16 +620,16 @@ function addSelectionToBet(jogo, selecao, pontuacao) {
     li.setAttribute('data-selection', selecao);
     li.setAttribute('data-pontuacao', pontuacao);
     li.innerHTML = `
-    <div class="d-flex justify-content-between" id="jogo-ficha">
-      <span class="">${jogo}</span>
-      <div class="d-flex">
-        <div class="selection-text">
-          <span>${selecao} @ ${pontuacao}</span>
+        <div class="d-flex justify-content-between" id = "jogo-ficha">
+            <span class="">${jogo}</span>
+                <div class="d-flex">
+                    <div class="selection-text">
+                        <span>${selecao} @ ${pontuacao}</span>
+                    </div>
+                    <button type="button" class="btn btn-remove fa-solid fa-xmark" id="deletar"></button>
+                </div>
         </div>
-        <button type="button" class="btn btn-remove fa-solid fa-xmark" id="deletar"></button>
-      </div>
-    </div>
-  `;
+        `;
 
     // Adicionar evento de remoção
     var btnRemove = li.querySelector('.btn-remove');

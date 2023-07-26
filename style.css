@@ -10,6 +10,10 @@ body {
     color: #2F3C55;
 }
 
+#fundo{
+   height: 100vh;
+}
+
 #formFileLg {
     font-size: small!important;
 }
