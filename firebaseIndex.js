@@ -181,6 +181,9 @@ const times = await getDocs(collection(db, "Times"));
 const jogadoresQuery = query(collectionGroup(db, "Jogadores"));
 const jogadores = await getDocs(jogadoresQuery);
 
+//puxar apostas do banco
+const apostas = collection(db, "Apostas");
+
 
 //div jogos da rodada
 const jogosRodada = document.getElementById("jogos-rodada");
@@ -551,16 +554,16 @@ Array.from(btnSelections).forEach(function (btn) {
             li.setAttribute('data-selection', selecao);
             li.setAttribute('data-pontuacao', pontuacao);
             li.innerHTML = `
-        <div class="d-flex justify-content-between" id = "jogo-ficha">
-          <span class="">${jogo}</span>
-          <div class="d-flex">
-            <div class="selection-text">
-              <span>${selecao} @ ${pontuacao}</span>
-            </div>
-            <button type="button" class="btn btn-remove fa-solid fa-xmark" id="deletar"></button>
-          </div>
-        </div>
-        `;
+                <div class="d-flex justify-content-between" id = "jogo-ficha">
+                <span class="">${jogo}</span>
+                <div class="d-flex">
+                    <div class="selection-text">
+                    <span>${selecao} @ ${pontuacao}</span>
+                    </div>
+                    <button type="button" class="btn btn-remove fa-solid fa-xmark" id="deletar"></button>
+                </div>
+                </div>
+                `;
 
             // Adicionar evento de remoção
             var btnRemove = li.querySelector('.btn-remove');
@@ -609,10 +612,6 @@ Array.from(btnSelections).forEach(function (btn) {
 // Função para adicionar a seleção na ficha de apostas
 function addSelectionToBet(jogo, selecao, pontuacao) {
     // Criar elemento da seleção
-
-
-
-
 
     var li = document.createElement('li');
     li.className = 'list-group-item selection';
@@ -746,6 +745,27 @@ selectJogador2Elements.forEach(function (select) {
 var btnAposta = document.getElementById('botao-aposta');
 
 btnAposta.addEventListener('click', function () {
+
+
+
+
+    //gravar apostas feitas
+
+    //percorrer apostas da ficha
+    var ul = document.getElementById("selections");
+    var items = ul.getElementsByTagName("li");
+    for (var i = 0; i < items.length; ++i) {
+        // do something with items[i], which is a <li> element
+        console.log(i);
+        console.log(items[i]);
+
+    }
+
+
+
+
+
+
     // Remover todas as seleções da ficha de apostas
     Array.from(selectionsContainer.getElementsByClassName('selection')).forEach(function (selection) {
         var selectionPontuacao = parseInt(selection.getAttribute('data-pontuacao'));
