@@ -38,24 +38,41 @@ if (document.querySelector('#form-registro') != null) {
         //dados usuario
         const email = formRegistro['emailPerfil'].value;
         const senha = formRegistro['senhaPerfil'].value;
+        const repitaSenha = formRegistro['repitaSenhaPerfil'].value;
         const usuario = formRegistro['usuarioPerfil'].value;
 
         // sign up and login usuario
-        createUserWithEmailAndPassword(auth, email, senha)
-            .then((cred) => {
+
+        if (senha === repitaSenha) {
+
+            createUserWithEmailAndPassword(auth, email, senha)
+                .then((cred) => {
+
+                    console.log(cred);
+
+                    return setDoc(doc(usuarios, cred.user.uid), {
+
+                        email: email,
+                        usuario: usuario,
+                        greens: 0,
+                        pontosSemana: 0,
+                        pontosTemporada: 0,
+                        reds: 0
+
+                    }).then(() => {
+                        formRegistro.reset();
+                        window.location.href = 'index.html';
+                    });
 
 
-                return setDoc(doc(usuarios), {
-                    id: cred.user.uid,
-                    email: email,
-                    usuario: usuario
-                }).then(() => {
-                    formRegistro.reset();
-                    window.location.href = 'index.html';
-                });
+                })
+        }
+        else {
+            alert('Senhas diferentes');
+        }
 
 
-            })
+
     })
 }
 

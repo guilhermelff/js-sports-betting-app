@@ -173,6 +173,10 @@ p a:hover {
     color:  rgb(186, 193, 207);
 }
 
+.gray {
+    color: rgb(152, 158, 170);
+}
+
 p a {
     color: rgb(152, 158, 170)
 }

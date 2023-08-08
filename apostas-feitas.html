@@ -23,7 +23,7 @@
 
 
 
-    <section class="mb-5">
+    <section id="fundo" class="min-vh-100">
         <div class="container py-5">
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="">
@@ -36,64 +36,15 @@
                         <div class="card-body mt-4 mb-5" id="apostas-feitas" style="display: none">
 
                             <div class="container mb-5">
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <div class="ticket">
-                                            <div class="ticket__content">
-                                                <p class="ticket__text">
+                                <div class="row" id="tickets">
 
-                                                    <span>Rodada 7</span><br>
-                                                    <span>Flamengo x Fluminense</span><br>
-                                                    <span>Gabriel Barbosa - Gol</span><br>
 
-                                                    <span class="resultado-aposta aberta"><i
-                                                            class="fa-solid fa-check green"></i></span><br>
-                                                    <span class="resultado-aposta resolvida"><i
-                                                            class="fa-solid fa-xmark red"></i></span><br>
-                                                    <span class="pontuacao-aposta">5</span><br>
-                                                </p>
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm">
-                                        <div class="ticket">
-                                            <div class="ticket__content">
-                                                <p class="ticket__text">
+                                    <!-- Apostas serão adicionadas aqui dinamicamente -->
 
-                                                    <span>Rodada 7</span><br>
-                                                    <span>Flamengo x Fluminense</span><br>
-                                                    <span>Fora</span><br>
 
-                                                    <span class="resultado-aposta resolvida"><i
-                                                            class="fa-solid fa-check green"></i></span><br>
-                                                    <span class="resultado-aposta aberta"><i
-                                                            class="fa-solid fa-xmark red"></i></span><br>
-                                                    <span class="pontuacao-aposta">5</span><br>
 
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm">
-                                        <div class="ticket">
-                                            <div class="ticket__content">
-                                                <p class="ticket__text">
 
-                                                    <span>Rodada 7</span><br>
-                                                    <span>Flamengo x Fluminense</span><br>
-                                                    <span>Gabriel Barbosa - Cartão</span><br>
-
-                                                    <span class="resultado-aposta resolvida"><i
-                                                            class="fa-solid fa-check green"></i></span><br>
-                                                    <span class="resultado-aposta aberta"><i
-                                                            class="fa-solid fa-xmark red"></i></span><br>
-                                                    <span class="pontuacao-aposta">5</span><br>
-
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
@@ -123,16 +74,15 @@
     <div w3-include-html="nav-bottom.html" class="sticky-bottom"></div>
 
 
-
+    <script type="module" src="firebaseApostas.js"></script>
     <script src="script.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
     <script>
         includeHTML();
     </script>
-    <script type="module" src="firebase.js"></script>
+
 
 
 

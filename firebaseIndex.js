@@ -22,10 +22,11 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
 
+
 //keep track of user logged in or out
 onAuthStateChanged(auth, (user) => {
 
-    //elementos que aparecem para usuarios logados
+    //elementos que aparecem para todos
     const ligasIcone = document.getElementById("link-ligas-icone");
     const ligasTexto = document.getElementById("link-ligas-texto");
     const minhasLigas = document.getElementById("minhas-ligas");
@@ -63,8 +64,136 @@ onAuthStateChanged(auth, (user) => {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         console.log(user);
-        const uid = user.uid;
-        // ...
+        var uid = user.uid;
+
+        const apostas = collection(db, "Usuarios", uid, "Apostas");
+
+        var btnAposta = document.getElementById('botao-aposta');
+
+        btnAposta.addEventListener('click', function () {
+
+            var ul = document.getElementById("selections");
+            const items = ul.getElementsByTagName("li");
+
+            console.log(items);
+
+
+            Object.values(items).forEach((item) => {
+
+                var selecao = item;
+                var jogo = selecao.getAttribute('data-jogo');
+                var aposta = selecao.getAttribute('data-selection');
+                var pontos = selecao.getAttribute('data-pontuacao');
+                var rodada = selecao.getAttribute('data-rodada');
+                var gol = selecao.getAttribute('data-gol');
+                var cartao = selecao.getAttribute('data-cartao');
+                var jogador = selecao.getAttribute('data-jogador');
+                var casa = selecao.getAttribute('data-casa');
+                var fora = selecao.getAttribute('data-fora');
+
+
+
+                console.log(selecao);
+                console.log(jogo);
+                console.log(aposta);
+                console.log(pontos);
+                console.log(rodada);
+                console.log(gol);
+                console.log(cartao);
+                console.log(jogador);
+
+                if (aposta === "Casa" || aposta === "Empate" || aposta === "Fora") {
+                    var resultado = true;
+                }
+
+                if (resultado) {
+                    return setDoc(doc(apostas), {
+
+                        jogo: jogo,
+                        resultado: true,
+                        casaEmpateFora: aposta,
+                        idApostador: uid,
+                        resolvida: false,
+                        rodada: rodada,
+                        pontos: pontos,
+                        casa: casa,
+                        fora: fora,
+                        acertouErrou: false
+                    })
+                }
+
+                if (cartao || gol) {
+                    return setDoc(doc(apostas), {
+
+                        jogo: jogo,
+                        resultado: false,
+                        cartao: cartao,
+                        gol: gol,
+                        idApostador: uid,
+                        resolvida: false,
+                        rodada: rodada,
+                        jogador: jogador,
+                        pontos: pontos,
+                        acertouErrou: false
+                    })
+                }
+
+            });
+
+            //limpa ficha
+
+            // Remover todas as seleções da ficha de apostas
+            Array.from(selectionsContainer.getElementsByClassName('selection')).forEach(function (selection) {
+                var selectionPontuacao = parseInt(selection.getAttribute('data-pontuacao'));
+                selection.remove();
+
+                // Atualizar somatório da pontuação
+                totalPontuacao -= selectionPontuacao;
+            });
+
+            // Zerar a pontuação total
+            totalPontuacao = 0;
+
+            // Atualizar o valor da pontuação total na interface
+            totalPontuacaoContainer.textContent = totalPontuacao;
+
+            // Ocultar a ficha de apostas
+            fichaContainer.style.display = 'none';
+
+            // Remover as classes "btn-success" e "btn-outline-light" de todos os botões de seleção
+            Array.from(btnSelections).forEach(function (button) {
+                button.classList.remove('btn-success', 'btn-outline-light');
+            });
+
+            // Resetar a seleção anterior
+            var previousSelection1 = null;
+            var previousSelection2 = null;
+
+
+            // Selecionar a opção com data-jogo igual a "vazio" nos dois selects
+            // Selecionar a opção com data-jogo igual a "vazio" em todas as ocorrências dos selects
+            var selectsJogador1 = document.querySelectorAll('[id^="select-jogador-1"]');
+            var selectsJogador2 = document.querySelectorAll('[id^="select-jogador-2"]');
+
+            selectsJogador1.forEach(function (select) {
+                select.querySelector('option[data-selection="vazio"]').selected = true;
+            });
+
+            selectsJogador2.forEach(function (select) {
+                select.querySelector('option[data-selection="vazio"]').selected = true;
+            });
+
+            alert('Aposta feita! Boa sorte!');
+
+
+
+
+
+
+
+        });
+
+
 
     }
 
@@ -104,68 +233,74 @@ onAuthStateChanged(auth, (user) => {
         });
 
 
+        var btnAposta = document.getElementById('botao-aposta');
+
+        btnAposta.addEventListener('click', function () {
+
+
+            //limpa ficha
+
+            // Remover todas as seleções da ficha de apostas
+            Array.from(selectionsContainer.getElementsByClassName('selection')).forEach(function (selection) {
+                var selectionPontuacao = parseInt(selection.getAttribute('data-pontuacao'));
+                selection.remove();
+
+                // Atualizar somatório da pontuação
+                totalPontuacao -= selectionPontuacao;
+            });
+
+            // Zerar a pontuação total
+            totalPontuacao = 0;
+
+            // Atualizar o valor da pontuação total na interface
+            totalPontuacaoContainer.textContent = totalPontuacao;
+
+            // Ocultar a ficha de apostas
+            fichaContainer.style.display = 'none';
+
+            // Remover as classes "btn-success" e "btn-outline-light" de todos os botões de seleção
+            Array.from(btnSelections).forEach(function (button) {
+                button.classList.remove('btn-success', 'btn-outline-light');
+            });
+
+            // Resetar a seleção anterior
+            var previousSelection1 = null;
+            var previousSelection2 = null;
+
+
+            // Selecionar a opção com data-jogo igual a "vazio" nos dois selects
+            // Selecionar a opção com data-jogo igual a "vazio" em todas as ocorrências dos selects
+            var selectsJogador1 = document.querySelectorAll('[id^="select-jogador-1"]');
+            var selectsJogador2 = document.querySelectorAll('[id^="select-jogador-2"]');
+
+            selectsJogador1.forEach(function (select) {
+                select.querySelector('option[data-selection="vazio"]').selected = true;
+            });
+
+            selectsJogador2.forEach(function (select) {
+                select.querySelector('option[data-selection="vazio"]').selected = true;
+            });
+
+
+            alert('Faça login para jogar');
+
+
+
+        });
+
+
+
+
         console.log("User is not signed");
+
+
     }
 });
 
-//login
-if (document.querySelector('#form-login') != null) {
 
-    const formLogin = document.querySelector('#form-login');
+// user database
+const usuarios = collection(db, "Usuarios");
 
-    formLogin.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        //dados usuario
-        const login = formLogin['loginPerfil'].value;
-        const senha = formLogin['loginSenhaPerfil'].value;
-
-        //login usuario
-        signInWithEmailAndPassword(auth, login, senha)
-            .then((cred) => {
-                formLogin.reset();
-                window.location.href = 'index.html';
-            })
-    })
-}
-
-//logout
-if (document.querySelector('#form-logout') != null) {
-
-    const logoutButton = document.querySelector('#form-logout');
-
-    logoutButton.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        //logout usuario
-        signOut(auth).then(() => {
-            window.location.href = 'index.html';
-        }).catch((error) => {
-            console.log(error);
-        });
-    })
-}
-
-//signup and login
-if (document.querySelector('#form-registro') != null) {
-
-    const formRegistro = document.querySelector('#form-registro');
-
-    formRegistro.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        //dados usuario
-        const email = formRegistro['emailPerfil'].value;
-        const senha = formRegistro['senhaPerfil'].value;
-
-        // sign up and login usuario
-        createUserWithEmailAndPassword(auth, email, senha)
-            .then((cred) => {
-                formRegistro.reset();
-                window.location.href = 'index.html';
-            })
-    })
-}
 
 //puxar os dados jogos da rodada
 const jogosQuery = query(collectionGroup(db, "Jogos"));
@@ -181,9 +316,6 @@ const times = await getDocs(collection(db, "Times"));
 const jogadoresQuery = query(collectionGroup(db, "Jogadores"));
 const jogadores = await getDocs(jogadoresQuery);
 
-//puxar apostas do banco
-const apostas = collection(db, "Apostas");
-
 
 //div jogos da rodada
 const jogosRodada = document.getElementById("jogos-rodada");
@@ -197,7 +329,9 @@ rodadas.forEach((doc) => {
     const rodada = doc.data();
 
     if (rodada.abertaFechada == true) {
-        mercado.innerHTML = `Mercado Aberto - Rodada ${rodada.numero}`;
+        const rodadaNumero = rodada.numero;
+        console.log(rodadaNumero);
+        mercado.innerHTML = `Mercado Aberto - Rodada ${rodadaNumero}`;
 
         //montar cada card de jogo
         let html = '';
@@ -207,6 +341,7 @@ rodadas.forEach((doc) => {
             const jogo = doc.data();
 
             if (jogo.rodada == rodada.numero) {
+                console.log(rodada.numero);
                 //peças do card
                 var cardJogo1 = `
         <div class="row">
@@ -231,7 +366,11 @@ rodadas.forEach((doc) => {
                                                                 <button type="button"
                                                                     class="btn btn-selection botao-card text-white-50"
                                                                     data-jogo="${jogo.casa} x ${jogo.fora}"
-                                                                    data-selection="Casa" data-pontuacao="${jogo.pontosCasa}">
+                                                                    data-selection="Casa" data-pontuacao="${jogo.pontosCasa}"
+                                                                    data-rodada="${rodada.numero}"
+                                                                    data-casa="${jogo.casa}"
+                                                                    data-fora="${jogo.fora}"
+                                                                    >
 
 
 
@@ -249,7 +388,11 @@ rodadas.forEach((doc) => {
                                                                 <button type="button"
                                                                     class="btn btn-selection botao-card text-white-50"
                                                                     data-jogo="${jogo.casa} x ${jogo.fora}"
-                                                                    data-selection="Empate" data-pontuacao="${jogo.pontosEmpate}">
+                                                                    data-selection="Empate" data-pontuacao="${jogo.pontosEmpate}"
+                                                                    data-rodada="${rodada.numero}"
+                                                                    data-casa="${jogo.casa}"
+                                                                    data-fora="${jogo.fora}"
+                                                                    >
 
 
                                                                     <div id="botao-jogo">
@@ -266,7 +409,11 @@ rodadas.forEach((doc) => {
                                                                 <button type="button"
                                                                     class="btn btn-selection botao-card text-white-50"
                                                                     data-jogo="${jogo.casa} x ${jogo.fora}"
-                                                                    data-selection="Fora" data-pontuacao="${jogo.pontosFora}">
+                                                                    data-selection="Fora" data-pontuacao="${jogo.pontosFora}"
+                                                                    data-rodada="${rodada.numero}"
+                                                                    data-casa="${jogo.casa}"
+                                                                    data-fora="${jogo.fora}"
+                                                                    >
 
 
                                                                     <div id="botao-jogo">
@@ -375,7 +522,13 @@ rodadas.forEach((doc) => {
                                                                             <option class="btn-selection"
                                                                                 data-jogo="${jogo.casa} x ${jogo.fora}"
                                                                                 data-selection="Gol - ${jogador.nome} - ${jogo.casa}"
-                                                                                data-pontuacao="${jogador.pontosGol}">${jogador.nome} : ${jogador.pontosGol}
+                                                                                data-pontuacao="${jogador.pontosGol}"
+                                                                                data-rodada="${rodada.numero}"
+                                                                                data-gol="true"
+                                                                                data-cartao="false"
+                                                                                data-jogador="${jogador.nome}"
+                                                                                >${jogador.nome} : ${jogador.pontosGol}
+                                                                                
                                                                             </option>
     
             `;
@@ -384,7 +537,12 @@ rodadas.forEach((doc) => {
                         var cardJogadoresCartaoCasaUnico = `
                     <option data-jogo="${jogo.casa} x ${jogo.fora}"
                         data-selection="Cartão - ${jogador.nome} - ${jogo.casa}"
-                        data-pontuacao="${jogador.pontosCartao}">
+                        data-pontuacao="${jogador.pontosCartao}"
+                        data-rodada="${rodada.numero}"
+                        data-gol="false"
+                        data-cartao="true"
+                        data-jogador="${jogador.nome}"
+                        >
                         ${jogador.nome} : ${jogador.pontosCartao}
                     </option>
             `;
@@ -398,7 +556,12 @@ rodadas.forEach((doc) => {
                                                                             <option class="btn-selection"
                                                                                 data-jogo="${jogo.casa} x ${jogo.fora}"
                                                                                 data-selection="Gol - ${jogador.nome} - ${jogo.fora}"
-                                                                                data-pontuacao="${jogador.pontosGol}">${jogador.nome} : ${jogador.pontosGol}
+                                                                                data-pontuacao="${jogador.pontosGol}"
+                                                                                data-rodada="${rodada.numero}"
+                                                                                data-gol="true"
+                                                                                data-cartao="false"
+                                                                                data-jogador="${jogador.nome}"
+                                                                                >${jogador.nome} : ${jogador.pontosGol}
                                                                             </option>
     
             `;
@@ -407,7 +570,12 @@ rodadas.forEach((doc) => {
                         var cardJogadoresCartaoForaUnico = `    
             <option data-jogo="${jogo.casa} x ${jogo.fora}"
                 data-selection="Cartão - ${jogador.nome} - ${jogo.fora}"
-                data-pontuacao="${jogador.pontosCartao}">
+                data-pontuacao="${jogador.pontosCartao}"
+                data-rodada="${rodada.numero}"
+                data-gol="false"
+                data-cartao="true"
+                data-jogador="${jogador.nome}"
+                >
                 ${jogador.nome} : ${jogador.pontosCartao}
             </option>
             `;
@@ -500,6 +668,10 @@ Array.from(btnSelections).forEach(function (btn) {
         var jogo = this.getAttribute('data-jogo');
         var selecao = this.getAttribute('data-selection');
         var pontuacao = parseInt(this.getAttribute('data-pontuacao'));
+        var rodada = parseInt(this.getAttribute('data-rodada'));
+        var casa = this.getAttribute('data-casa');
+        var fora = this.getAttribute('data-fora');
+
 
         // Verificar se o botão está marcado com "btn-success"
         var isButtonSelected = this.classList.contains('btn-success');
@@ -553,6 +725,10 @@ Array.from(btnSelections).forEach(function (btn) {
             li.setAttribute('data-jogo', jogo);
             li.setAttribute('data-selection', selecao);
             li.setAttribute('data-pontuacao', pontuacao);
+            li.setAttribute('data-rodada', rodada);
+            li.setAttribute('data-casa', casa);
+            li.setAttribute('data-fora', fora);
+
             li.innerHTML = `
                 <div class="d-flex justify-content-between" id = "jogo-ficha">
                 <span class="">${jogo}</span>
@@ -610,7 +786,7 @@ Array.from(btnSelections).forEach(function (btn) {
 
 
 // Função para adicionar a seleção na ficha de apostas
-function addSelectionToBet(jogo, selecao, pontuacao) {
+function addSelectionToBet(jogo, selecao, pontuacao, rodada, gol, cartao, jogador) {
     // Criar elemento da seleção
 
     var li = document.createElement('li');
@@ -618,6 +794,10 @@ function addSelectionToBet(jogo, selecao, pontuacao) {
     li.setAttribute('data-jogo', jogo);
     li.setAttribute('data-selection', selecao);
     li.setAttribute('data-pontuacao', pontuacao);
+    li.setAttribute('data-rodada', rodada);
+    li.setAttribute('data-gol', gol);
+    li.setAttribute('data-cartao', cartao);
+    li.setAttribute('data-jogador', jogador);
     li.innerHTML = `
         <div class="d-flex justify-content-between" id = "jogo-ficha">
             <span class="">${jogo}</span>
@@ -689,6 +869,11 @@ selectJogador1Elements.forEach(function (select) {
         var jogo = selectedOption.getAttribute('data-jogo');
         var selecao = selectedOption.getAttribute('data-selection');
         var pontuacao = parseInt(selectedOption.getAttribute('data-pontuacao'));
+        var rodada = parseInt(selectedOption.getAttribute('data-rodada'));
+        var gol = (selectedOption.getAttribute('data-gol') === "true");
+        var cartao = (selectedOption.getAttribute('data-cartao') === "true");
+        var jogador = selectedOption.getAttribute('data-jogador');
+
 
         // Remover a seleção anterior da ficha de apostas, se não for "vazio"
         if (previousSelection1[jogo] && previousSelection1[jogo] !== 'vazio') {
@@ -702,7 +887,7 @@ selectJogador1Elements.forEach(function (select) {
 
         // Adicionar a nova seleção à ficha de apostas, se não for "vazio"
         if (selecao !== 'vazio') {
-            addSelectionToBet(jogo, selecao, pontuacao);
+            addSelectionToBet(jogo, selecao, pontuacao, rodada, gol, cartao, jogador);
         }
 
         // Atualizar a seleção anterior
@@ -720,6 +905,10 @@ selectJogador2Elements.forEach(function (select) {
         var jogo = selectedOption.getAttribute('data-jogo');
         var selecao = selectedOption.getAttribute('data-selection');
         var pontuacao = parseInt(selectedOption.getAttribute('data-pontuacao'));
+        var rodada = parseInt(selectedOption.getAttribute('data-rodada'));
+        var gol = (selectedOption.getAttribute('data-gol') === "true");
+        var cartao = (selectedOption.getAttribute('data-cartao') === "true");
+        var jogador = selectedOption.getAttribute('data-jogador');
 
         // Remover a seleção anterior da ficha de apostas, se não for "vazio"
         if (previousSelection2[jogo] && previousSelection2[jogo] !== 'vazio') {
@@ -733,7 +922,7 @@ selectJogador2Elements.forEach(function (select) {
 
         // Adicionar a nova seleção à ficha de apostas, se não for "vazio"
         if (selecao !== 'vazio') {
-            addSelectionToBet(jogo, selecao, pontuacao);
+            addSelectionToBet(jogo, selecao, pontuacao, rodada, gol, cartao, jogador);
         }
 
         // Atualizar a seleção anterior
@@ -741,73 +930,4 @@ selectJogador2Elements.forEach(function (select) {
     });
 });
 
-
-var btnAposta = document.getElementById('botao-aposta');
-
-btnAposta.addEventListener('click', function () {
-
-
-
-
-    //gravar apostas feitas
-
-    //percorrer apostas da ficha
-    var ul = document.getElementById("selections");
-    var items = ul.getElementsByTagName("li");
-    for (var i = 0; i < items.length; ++i) {
-        // do something with items[i], which is a <li> element
-        console.log(i);
-        console.log(items[i]);
-
-    }
-
-
-
-
-
-
-    // Remover todas as seleções da ficha de apostas
-    Array.from(selectionsContainer.getElementsByClassName('selection')).forEach(function (selection) {
-        var selectionPontuacao = parseInt(selection.getAttribute('data-pontuacao'));
-        selection.remove();
-
-        // Atualizar somatório da pontuação
-        totalPontuacao -= selectionPontuacao;
-    });
-
-    // Zerar a pontuação total
-    totalPontuacao = 0;
-
-    // Atualizar o valor da pontuação total na interface
-    totalPontuacaoContainer.textContent = totalPontuacao;
-
-    // Ocultar a ficha de apostas
-    fichaContainer.style.display = 'none';
-
-    // Remover as classes "btn-success" e "btn-outline-light" de todos os botões de seleção
-    Array.from(btnSelections).forEach(function (button) {
-        button.classList.remove('btn-success', 'btn-outline-light');
-    });
-
-    // Resetar a seleção anterior
-    var previousSelection1 = null;
-    var previousSelection2 = null;
-
-
-    // Selecionar a opção com data-jogo igual a "vazio" nos dois selects
-    // Selecionar a opção com data-jogo igual a "vazio" em todas as ocorrências dos selects
-    var selectsJogador1 = document.querySelectorAll('[id^="select-jogador-1"]');
-    var selectsJogador2 = document.querySelectorAll('[id^="select-jogador-2"]');
-
-    selectsJogador1.forEach(function (select) {
-        select.querySelector('option[data-selection="vazio"]').selected = true;
-    });
-
-    selectsJogador2.forEach(function (select) {
-        select.querySelector('option[data-selection="vazio"]').selected = true;
-    });
-
-
-
-});
 
