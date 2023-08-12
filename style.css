@@ -120,7 +120,15 @@ body {
     background-color:  #6985bd;
 }
 
+.admin-ativo #botao-admin {
+    background-color:  #6985bd;
+}
+
 .apostas-ativo #botao-apostas-feitas i{
+     color: white;
+}
+
+.admin-ativo #botao-admin i{
      color: white;
 }
 
@@ -431,6 +439,10 @@ i {
 
 
 #botao-apostas-feitas {
+    margin-right: 6px;
+}
+
+#botao-admin {
     margin-right: 6px;
 }
 
