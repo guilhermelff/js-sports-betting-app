@@ -53,6 +53,14 @@ async function atribuiPontuacao(uid, pontosSemanaRodada, greensRodada, redsRodad
 
 };
 
+async function setResolvidaTrue(docRefAposta) {
+    var docRef = docRefAposta;
+
+    await updateDoc(docRef, {
+        resolvida: true
+    });
+};
+
 //metodo para resolver as apostas do usuario
 async function resolveApostasUsuario(uid) {
     var apostas = await getDocs(collection(db, "Usuarios", uid, "Apostas"));
@@ -63,19 +71,24 @@ async function resolveApostasUsuario(uid) {
 
     console.log(uid);
 
-    apostas.forEach((doc) => {
-        var aposta = doc.data();
+    apostas.forEach((docAposta) => {
+
+        var docRef = doc(db, "Usuarios", uid, "Apostas", docAposta.id);
+
+        var aposta = docAposta.data();
         console.log(aposta.acertouErrou);
 
         if (aposta.resolvida == false) {
             if (aposta.acertouErrou == true) {
                 pontosSemana += aposta.pontos;
                 greens += 1;
-                aposta.resolvida = true;
+                setResolvidaTrue(docRef);
+
             }
             if (aposta.acertouErrou == false) {
                 reds += 1;
-                aposta.resolvida = true;
+                setResolvidaTrue(docRef);
+
             };
         };
     });

@@ -115,7 +115,7 @@ onAuthStateChanged(auth, (user) => {
                         idApostador: uid,
                         resolvida: false,
                         rodada: rodada,
-                        pontos: pontos,
+                        pontos: parseInt(pontos),
                         casa: casa,
                         fora: fora,
                         acertouErrou: false
@@ -133,7 +133,7 @@ onAuthStateChanged(auth, (user) => {
                         resolvida: false,
                         rodada: rodada,
                         jogador: jogador,
-                        pontos: pontos,
+                        pontos: parseInt(pontos),
                         acertouErrou: false
                     })
                 }
@@ -184,10 +184,6 @@ onAuthStateChanged(auth, (user) => {
             });
 
             alert('Aposta feita! Boa sorte!');
-
-
-
-
 
 
 

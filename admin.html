@@ -20,9 +20,674 @@
     <div w3-include-html="nav-top.html" class="sticky-top admin-ativo"></div>
     <div w3-include-html="alert-element.html"></div>
 
-    <section class="vh-100">
-        <div class="  text-center mt-5 mb-2">
-            <div class="px-5 py-5" id="card">
+
+    <div class="  text-center mt-5 mb-2">
+        <div class="px-5 py-5 mb-5" id="card">
+
+
+
+
+            <div class=" mt-3">
+
+                <form action="" class="mb-2">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <select id="select-casa" class="form-select text-white-50">
+                                <option class="btn-selection" data-casa="vazio">Casa</option>
+                                <option class="btn-selection" data-casa="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-casa="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-casa="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-casa="Bahia">Bahia</option>
+                                <option class="btn-selection" data-casa="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-casa="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-casa="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-casa="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-casa="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-casa="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-casa="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-casa="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-casa="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-casa="Goiás">Goiás</option>
+                                <option class="btn-selection" data-casa="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-casa="Internacional">Internacional</option>
+                                <option class="btn-selection" data-casa="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-casa="Santos">Santos</option>
+                                <option class="btn-selection" data-casa="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-casa="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <div>
+
+                            <select id="select-fora" class="form-select text-white-50">
+                                <option class="btn-selection" data-fora="vazio">Fora</option>
+                                <option class="btn-selection" data-fora="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-fora="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-fora="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-fora="Bahia">Bahia</option>
+                                <option class="btn-selection" data-fora="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-fora="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-fora="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-fora="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-fora="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-fora="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-fora="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-fora="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-fora="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-fora="Goiás">Goiás</option>
+                                <option class="btn-selection" data-fora="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-fora="Internacional">Internacional</option>
+                                <option class="btn-selection" data-fora="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-fora="Santos">Santos</option>
+                                <option class="btn-selection" data-fora="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-fora="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <button class="btn text-white-50" id="inserir-jogo">
+                            inserir jogo
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <form action="" class="mb-2">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <select id="select-casa" class="form-select text-white-50">
+                                <option class="btn-selection" data-casa="vazio">Casa</option>
+                                <option class="btn-selection" data-casa="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-casa="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-casa="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-casa="Bahia">Bahia</option>
+                                <option class="btn-selection" data-casa="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-casa="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-casa="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-casa="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-casa="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-casa="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-casa="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-casa="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-casa="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-casa="Goiás">Goiás</option>
+                                <option class="btn-selection" data-casa="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-casa="Internacional">Internacional</option>
+                                <option class="btn-selection" data-casa="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-casa="Santos">Santos</option>
+                                <option class="btn-selection" data-casa="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-casa="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <div>
+
+                            <select id="select-fora" class="form-select text-white-50">
+                                <option class="btn-selection" data-fora="vazio">Fora</option>
+                                <option class="btn-selection" data-fora="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-fora="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-fora="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-fora="Bahia">Bahia</option>
+                                <option class="btn-selection" data-fora="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-fora="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-fora="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-fora="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-fora="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-fora="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-fora="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-fora="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-fora="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-fora="Goiás">Goiás</option>
+                                <option class="btn-selection" data-fora="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-fora="Internacional">Internacional</option>
+                                <option class="btn-selection" data-fora="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-fora="Santos">Santos</option>
+                                <option class="btn-selection" data-fora="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-fora="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <button class="btn text-white-50" id="inserir-jogo">
+                            inserir jogo
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <form action="" class="mb-2">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <select id="select-casa" class="form-select text-white-50">
+                                <option class="btn-selection" data-casa="vazio">Casa</option>
+                                <option class="btn-selection" data-casa="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-casa="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-casa="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-casa="Bahia">Bahia</option>
+                                <option class="btn-selection" data-casa="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-casa="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-casa="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-casa="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-casa="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-casa="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-casa="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-casa="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-casa="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-casa="Goiás">Goiás</option>
+                                <option class="btn-selection" data-casa="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-casa="Internacional">Internacional</option>
+                                <option class="btn-selection" data-casa="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-casa="Santos">Santos</option>
+                                <option class="btn-selection" data-casa="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-casa="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <div>
+
+                            <select id="select-fora" class="form-select text-white-50">
+                                <option class="btn-selection" data-fora="vazio">Fora</option>
+                                <option class="btn-selection" data-fora="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-fora="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-fora="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-fora="Bahia">Bahia</option>
+                                <option class="btn-selection" data-fora="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-fora="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-fora="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-fora="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-fora="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-fora="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-fora="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-fora="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-fora="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-fora="Goiás">Goiás</option>
+                                <option class="btn-selection" data-fora="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-fora="Internacional">Internacional</option>
+                                <option class="btn-selection" data-fora="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-fora="Santos">Santos</option>
+                                <option class="btn-selection" data-fora="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-fora="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <button class="btn text-white-50" id="inserir-jogo">
+                            inserir jogo
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <form action="" class="mb-2">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <select id="select-casa" class="form-select text-white-50">
+                                <option class="btn-selection" data-casa="vazio">Casa</option>
+                                <option class="btn-selection" data-casa="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-casa="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-casa="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-casa="Bahia">Bahia</option>
+                                <option class="btn-selection" data-casa="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-casa="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-casa="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-casa="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-casa="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-casa="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-casa="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-casa="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-casa="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-casa="Goiás">Goiás</option>
+                                <option class="btn-selection" data-casa="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-casa="Internacional">Internacional</option>
+                                <option class="btn-selection" data-casa="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-casa="Santos">Santos</option>
+                                <option class="btn-selection" data-casa="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-casa="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <div>
+
+                            <select id="select-fora" class="form-select text-white-50">
+                                <option class="btn-selection" data-fora="vazio">Fora</option>
+                                <option class="btn-selection" data-fora="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-fora="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-fora="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-fora="Bahia">Bahia</option>
+                                <option class="btn-selection" data-fora="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-fora="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-fora="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-fora="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-fora="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-fora="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-fora="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-fora="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-fora="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-fora="Goiás">Goiás</option>
+                                <option class="btn-selection" data-fora="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-fora="Internacional">Internacional</option>
+                                <option class="btn-selection" data-fora="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-fora="Santos">Santos</option>
+                                <option class="btn-selection" data-fora="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-fora="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <button class="btn text-white-50" id="inserir-jogo">
+                            inserir jogo
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <form action="" class="mb-2">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <select id="select-casa" class="form-select text-white-50">
+                                <option class="btn-selection" data-casa="vazio">Casa</option>
+                                <option class="btn-selection" data-casa="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-casa="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-casa="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-casa="Bahia">Bahia</option>
+                                <option class="btn-selection" data-casa="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-casa="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-casa="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-casa="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-casa="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-casa="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-casa="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-casa="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-casa="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-casa="Goiás">Goiás</option>
+                                <option class="btn-selection" data-casa="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-casa="Internacional">Internacional</option>
+                                <option class="btn-selection" data-casa="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-casa="Santos">Santos</option>
+                                <option class="btn-selection" data-casa="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-casa="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <div>
+
+                            <select id="select-fora" class="form-select text-white-50">
+                                <option class="btn-selection" data-fora="vazio">Fora</option>
+                                <option class="btn-selection" data-fora="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-fora="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-fora="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-fora="Bahia">Bahia</option>
+                                <option class="btn-selection" data-fora="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-fora="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-fora="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-fora="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-fora="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-fora="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-fora="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-fora="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-fora="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-fora="Goiás">Goiás</option>
+                                <option class="btn-selection" data-fora="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-fora="Internacional">Internacional</option>
+                                <option class="btn-selection" data-fora="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-fora="Santos">Santos</option>
+                                <option class="btn-selection" data-fora="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-fora="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <button class="btn text-white-50" id="inserir-jogo">
+                            inserir jogo
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <form action="" class="mb-2">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <select id="select-casa" class="form-select text-white-50">
+                                <option class="btn-selection" data-casa="vazio">Casa</option>
+                                <option class="btn-selection" data-casa="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-casa="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-casa="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-casa="Bahia">Bahia</option>
+                                <option class="btn-selection" data-casa="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-casa="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-casa="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-casa="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-casa="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-casa="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-casa="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-casa="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-casa="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-casa="Goiás">Goiás</option>
+                                <option class="btn-selection" data-casa="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-casa="Internacional">Internacional</option>
+                                <option class="btn-selection" data-casa="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-casa="Santos">Santos</option>
+                                <option class="btn-selection" data-casa="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-casa="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <div>
+
+                            <select id="select-fora" class="form-select text-white-50">
+                                <option class="btn-selection" data-fora="vazio">Fora</option>
+                                <option class="btn-selection" data-fora="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-fora="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-fora="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-fora="Bahia">Bahia</option>
+                                <option class="btn-selection" data-fora="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-fora="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-fora="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-fora="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-fora="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-fora="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-fora="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-fora="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-fora="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-fora="Goiás">Goiás</option>
+                                <option class="btn-selection" data-fora="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-fora="Internacional">Internacional</option>
+                                <option class="btn-selection" data-fora="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-fora="Santos">Santos</option>
+                                <option class="btn-selection" data-fora="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-fora="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <button class="btn text-white-50" id="inserir-jogo">
+                            inserir jogo
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <form action="" class="mb-2">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <select id="select-casa" class="form-select text-white-50">
+                                <option class="btn-selection" data-casa="vazio">Casa</option>
+                                <option class="btn-selection" data-casa="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-casa="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-casa="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-casa="Bahia">Bahia</option>
+                                <option class="btn-selection" data-casa="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-casa="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-casa="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-casa="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-casa="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-casa="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-casa="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-casa="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-casa="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-casa="Goiás">Goiás</option>
+                                <option class="btn-selection" data-casa="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-casa="Internacional">Internacional</option>
+                                <option class="btn-selection" data-casa="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-casa="Santos">Santos</option>
+                                <option class="btn-selection" data-casa="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-casa="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <div>
+
+                            <select id="select-fora" class="form-select text-white-50">
+                                <option class="btn-selection" data-fora="vazio">Fora</option>
+                                <option class="btn-selection" data-fora="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-fora="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-fora="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-fora="Bahia">Bahia</option>
+                                <option class="btn-selection" data-fora="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-fora="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-fora="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-fora="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-fora="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-fora="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-fora="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-fora="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-fora="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-fora="Goiás">Goiás</option>
+                                <option class="btn-selection" data-fora="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-fora="Internacional">Internacional</option>
+                                <option class="btn-selection" data-fora="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-fora="Santos">Santos</option>
+                                <option class="btn-selection" data-fora="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-fora="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <button class="btn text-white-50" id="inserir-jogo">
+                            inserir jogo
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <form action="" class="mb-2">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <select id="select-casa" class="form-select text-white-50">
+                                <option class="btn-selection" data-casa="vazio">Casa</option>
+                                <option class="btn-selection" data-casa="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-casa="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-casa="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-casa="Bahia">Bahia</option>
+                                <option class="btn-selection" data-casa="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-casa="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-casa="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-casa="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-casa="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-casa="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-casa="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-casa="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-casa="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-casa="Goiás">Goiás</option>
+                                <option class="btn-selection" data-casa="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-casa="Internacional">Internacional</option>
+                                <option class="btn-selection" data-casa="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-casa="Santos">Santos</option>
+                                <option class="btn-selection" data-casa="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-casa="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <div>
+
+                            <select id="select-fora" class="form-select text-white-50">
+                                <option class="btn-selection" data-fora="vazio">Fora</option>
+                                <option class="btn-selection" data-fora="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-fora="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-fora="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-fora="Bahia">Bahia</option>
+                                <option class="btn-selection" data-fora="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-fora="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-fora="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-fora="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-fora="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-fora="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-fora="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-fora="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-fora="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-fora="Goiás">Goiás</option>
+                                <option class="btn-selection" data-fora="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-fora="Internacional">Internacional</option>
+                                <option class="btn-selection" data-fora="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-fora="Santos">Santos</option>
+                                <option class="btn-selection" data-fora="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-fora="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <button class="btn text-white-50" id="inserir-jogo">
+                            inserir jogo
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <form action="" class="mb-2">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <select id="select-casa" class="form-select text-white-50">
+                                <option class="btn-selection" data-casa="vazio">Casa</option>
+                                <option class="btn-selection" data-casa="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-casa="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-casa="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-casa="Bahia">Bahia</option>
+                                <option class="btn-selection" data-casa="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-casa="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-casa="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-casa="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-casa="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-casa="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-casa="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-casa="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-casa="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-casa="Goiás">Goiás</option>
+                                <option class="btn-selection" data-casa="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-casa="Internacional">Internacional</option>
+                                <option class="btn-selection" data-casa="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-casa="Santos">Santos</option>
+                                <option class="btn-selection" data-casa="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-casa="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <div>
+
+                            <select id="select-fora" class="form-select text-white-50">
+                                <option class="btn-selection" data-fora="vazio">Fora</option>
+                                <option class="btn-selection" data-fora="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-fora="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-fora="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-fora="Bahia">Bahia</option>
+                                <option class="btn-selection" data-fora="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-fora="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-fora="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-fora="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-fora="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-fora="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-fora="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-fora="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-fora="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-fora="Goiás">Goiás</option>
+                                <option class="btn-selection" data-fora="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-fora="Internacional">Internacional</option>
+                                <option class="btn-selection" data-fora="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-fora="Santos">Santos</option>
+                                <option class="btn-selection" data-fora="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-fora="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <button class="btn text-white-50" id="inserir-jogo">
+                            inserir jogo
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <form action="" class="mb-2">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <select id="select-casa" class="form-select text-white-50">
+                                <option class="btn-selection" data-casa="vazio">Casa</option>
+                                <option class="btn-selection" data-casa="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-casa="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-casa="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-casa="Bahia">Bahia</option>
+                                <option class="btn-selection" data-casa="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-casa="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-casa="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-casa="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-casa="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-casa="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-casa="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-casa="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-casa="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-casa="Goiás">Goiás</option>
+                                <option class="btn-selection" data-casa="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-casa="Internacional">Internacional</option>
+                                <option class="btn-selection" data-casa="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-casa="Santos">Santos</option>
+                                <option class="btn-selection" data-casa="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-casa="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <div>
+
+                            <select id="select-fora" class="form-select text-white-50">
+                                <option class="btn-selection" data-fora="vazio">Fora</option>
+                                <option class="btn-selection" data-fora="América (MG)">América (MG)</option>
+                                <option class="btn-selection" data-fora="Ath Paranaense">Ath Paranaense</option>
+                                <option class="btn-selection" data-fora="Atlético Mineiro">Atlético Mineiro</option>
+                                <option class="btn-selection" data-fora="Bahia">Bahia</option>
+                                <option class="btn-selection" data-fora="Botafogo (RJ)">Botafogo (RJ)</option>
+                                <option class="btn-selection" data-fora="Bragantino">Bragantino</option>
+                                <option class="btn-selection" data-fora="Corinthians">Corinthians</option>
+                                <option class="btn-selection" data-fora="Coritiba">Coritiba</option>
+                                <option class="btn-selection" data-fora="Cruzeiro">Cruzeiro</option>
+                                <option class="btn-selection" data-fora="Cuiabá">Cuiabá</option>
+                                <option class="btn-selection" data-fora="Flamengo">Flamengo</option>
+                                <option class="btn-selection" data-fora="Fluminense">Fluminense</option>
+                                <option class="btn-selection" data-fora="Fortaleza">Fortaleza</option>
+                                <option class="btn-selection" data-fora="Goiás">Goiás</option>
+                                <option class="btn-selection" data-fora="Grêmio">Grêmio</option>
+                                <option class="btn-selection" data-fora="Internacional">Internacional</option>
+                                <option class="btn-selection" data-fora="Palmeiras">Palmeiras</option>
+                                <option class="btn-selection" data-fora="Santos">Santos</option>
+                                <option class="btn-selection" data-fora="São Paulo">São Paulo</option>
+                                <option class="btn-selection" data-fora="Vasco da Gama">Vasco da Gama</option>
+                            </select>
+                        </div>
+
+                        <button class="btn text-white-50" id="inserir-jogo">
+                            inserir jogo
+                        </button>
+
+                    </div>
+
+                </form>
 
                 <button class="btn text-white-50" id="puxar-resultados">
                     puxar resultados
@@ -30,10 +695,13 @@
                 <button class="btn text-white-50" id="resolver-apostas">
                     resolver apostas
                 </button>
-
             </div>
+
+
+
         </div>
-    </section>
+    </div>
+
 
 
     <div w3-include-html="nav-bottom.html" class="sticky-bottom"></div>
