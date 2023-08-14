@@ -96,37 +96,12 @@ async function resolveApostasUsuario(uid) {
     atribuiPontuacao(uid, pontosSemana, greens, reds);
 };
 
-
 // metodo para resolver as apostas feitas
 async function resolveApostas() {
     //acessa cada usuário
     usuarios.forEach((doc) => {
         //resolve as apostas do usuário
         resolveApostasUsuario(doc.id);
-
-        /*
-        apostas.forEach((aposta) => {
-            if (acertouErrou) {
-                var pontosSemana = usuario.pontosSemana;
-                var pontosTemporada = usuario.pontosTemporada;
-                var greens = usuario.greens;
-
-                pontosSemana += pontos;
-                pontosTemporada += pontos;
-                greens += 1;
-
-                resolvida = true;
-            }
-
-            if (acertouErrou == false) {
-                var reds = usuario.reds;
-
-                reds += 1;
-
-                resolvida = true;
-            }
-
-        });*/
     });
 }
 
@@ -177,6 +152,12 @@ onAuthStateChanged(auth, (user) => {
         const botaoResolveApostas = document.getElementById('resolver-apostas');
         botaoResolveApostas.addEventListener('click', function () {
             resolveApostas();
+        });
+
+        const botaoInsereJogo = document.getElementById('inserir-jogo');
+        botaoInsereJogo.addEventListener('click', function () {
+            calculaPontos(casa, fora);
+            insereJogo(casa, fora, pontosCasa, pontosEmpate, pontosFora);
         });
 
 

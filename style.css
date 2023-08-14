@@ -383,16 +383,25 @@ i {
 }
 
 
+.botao-admin {
+    width: 150px;
+    margin-right: 3px;
+    margin-bottom: 10px;
+}
+
+
+#inserir-jogo {
+    scale: 0.8;
+    position: relative;
+    top: -5px;
+
+}
 
 
 
 
 
-
-
-
-
-#select-jogador-1, #select-casa, #select-fora {
+#select-jogador-1, #select-casa, #select-fora, #select-time {
 
             font-size: 10px;
            
@@ -406,9 +415,26 @@ i {
             -webkit-appearance: none;
             -moz-appearance: none;
             cursor: pointer;
+
+            
         }
 
-        #select-jogador option,  #select-casa option, #select-fora option {
+         #insere-nome, #insere-pontos-gol, #insere-pontos-cartao {
+            font-size: 10px;
+           
+            background-color: #2d3547;
+            border: none;
+            border-radius: 4px;
+            
+            width: 125px;
+
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+         }
+
+        #select-jogador option,  #select-casa option, #select-fora option, #select-time option{
             background-color: #394867;
         }
 
