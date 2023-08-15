@@ -3,6 +3,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebas
 import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js'
 import { getFirestore, collection, getDocs, setDoc, doc, collectionGroup, query, where, getDoc, updateDoc, increment } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js'
 
+
 //dados do banco
 const firebaseConfig = {
     apiKey: "AIzaSyB95hZnSTy2dzBEPFO06lDzfDIlwYsU3nE",
@@ -155,9 +156,20 @@ onAuthStateChanged(auth, (user) => {
         });
 
         const botaoInsereJogo = document.getElementById('inserir-jogo');
-        botaoInsereJogo.addEventListener('click', function () {
+        botaoInsereJogo.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            fetch('./web-scraping/jsonData/times.json')
+                .then((response) => response.json())
+                .then((json) => console.log(json));
+
+
+
+            /*
             calculaPontos(casa, fora);
             insereJogo(casa, fora, pontosCasa, pontosEmpate, pontosFora);
+            */
+
         });
 
 
