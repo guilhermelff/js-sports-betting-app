@@ -294,21 +294,15 @@ onAuthStateChanged(auth, (user) => {
 });
 
 
-// user database
-const usuarios = collection(db, "Usuarios");
-
 
 //puxar os dados jogos da rodada
 const jogosQuery = query(collectionGroup(db, "Jogos"));
 const jogos = await getDocs(jogosQuery);
 
-const jogoss = await getDocs(collection(db, "Rodadas", "1", "Jogos"));
-
 //puxar dados das rodadas
 const rodadas = await getDocs(collection(db, "Rodadas"));
 
 //puxar dados dos jogadores de cada time
-const times = await getDocs(collection(db, "Times"));
 const jogadoresQuery = query(collectionGroup(db, "Jogadores"));
 const jogadores = await getDocs(jogadoresQuery);
 
