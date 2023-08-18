@@ -155,20 +155,32 @@ onAuthStateChanged(auth, (user) => {
             resolveApostas();
         });
 
-        const botaoInsereJogo = document.getElementById('inserir-jogo');
-        botaoInsereJogo.addEventListener('click', function (e) {
+        async function insereJogo(posicaoEResultados, casa, fora) {
+            //CONTINUA DAQUI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        };
+
+        const formInsereJogo = document.querySelector('#form-insere-jogo');
+        formInsereJogo.addEventListener('submit', (e) => {
             e.preventDefault();
+
+            //dados jogo
+            const casa = formInsereJogo['select-casa'].value;
+            const fora = formInsereJogo['select-fora'].value;
 
             fetch('./web-scraping/jsonData/times.json')
                 .then((response) => response.json())
-                .then((json) => console.log(json));
+                .then((json) => {
+                    var posicaoEResultados = [];
+                    posicaoEResultados = json;
+                    console.log(posicaoEResultados);
+                    console.log(casa);
+                    console.log(fora);
 
+                    insereJogo(posicaoEResultados, casa, fora);
 
+                });
 
-            /*
-            calculaPontos(casa, fora);
-            insereJogo(casa, fora, pontosCasa, pontosEmpate, pontosFora);
-            */
+            //insereJogo(posicaoEResultados, casa, fora);
 
         });
 
