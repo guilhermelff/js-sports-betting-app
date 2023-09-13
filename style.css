@@ -38,11 +38,11 @@ body {
     background-color: yellow;
 }
 
-#red, #reds-usuario-nav {
+#red, #reds-usuario-nav, #reds-perfil {
     color : #FF5252
 }
 
-#green, #greens-usuario-nav {
+#green, #greens-usuario-nav, #greens-perfil {
     color : #0DE975
 }
 

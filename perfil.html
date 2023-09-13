@@ -27,23 +27,21 @@
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
                         class="rounded-circle img-fluid" style="width: 100px;" />
                 </div>
-                <h4 class="mb-2 text-white">Julie L. Arsenault</h4>
-                <h5 class="mb-2 text-white-50">@julie</h5>
-                <p class="text mb-4 text-white-50">54 pontos</p>
+
+                <h5 class="mb-2 text-white" id="usuario-perfil">@julie</h5>
+                <p class="text mb-4 text-white-50" id="pontos-perfil"></p>
 
                 <form id="form-logout">
                     <button class="btn btn-outline-light btn-lg px-5 mb-4" type="submit">Logout</button>
                 </form>
 
                 <div class="mt-2">
-                    <span class=" h5 mx-2" id="green">
-                        7
-                        <span class="text text-white-50">Greens</span>
+                    <span class=" h5 mx-2" id="greens-perfil">
+
                     </span>
 
-                    <span class="h5 mx-2" id="red">
-                        2
-                        <span class="text text-white-50">Reds</span>
+                    <span class="h5 mx-2" id="reds-perfil">
+
                     </span>
 
                 </div>
@@ -65,6 +63,8 @@
     <script>
         includeHTML();
     </script>
+    <script type="module" src="firebaseNavTop.js"></script>
+    <script type="module" src="firebasePerfil.js"></script>
 
 
 
