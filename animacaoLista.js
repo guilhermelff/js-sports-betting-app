@@ -1,12 +1,17 @@
 const cardContainer = document.getElementById("card-container");
 const loader = document.getElementById("loader");
 const cardLimit = 100;
-const cardIncrease = 20;
+const cardIncreaseInitial = 20;
+const cardIncrease = 5;
 const pageCount = Math.ceil(cardLimit / cardIncrease);
 let currentPage = 1;
 
 
-const createPerfilLista = (index) => {
+const createPerfilLista = (index, inicial) => {
+
+    if (inicial === false) {
+        index += 15;
+    }
 
     const card = document.createElement("div");
 
@@ -27,7 +32,31 @@ const createPerfilLista = (index) => {
 
 };
 
+const addCardsInicial = (pageIndex) => {
+
+    var inicial = true;
+
+    currentPage = pageIndex;
+
+    const startRange = (pageIndex - 1) * cardIncreaseInitial;
+
+    const endRange = currentPage == pageCount ? cardLimit : pageIndex * cardIncreaseInitial;
+
+    for (let i = startRange + 1; i <= endRange; i++) {
+
+        //VERIFICAR SE PERFIL EXISTE
+
+        //PUXA UM PERFIL DO BANCO AQUI
+
+        createPerfilLista(i, inicial);
+
+    }
+
+};
+
 const addCards = (pageIndex) => {
+
+    var inicial = false;
 
     currentPage = pageIndex;
 
@@ -38,7 +67,7 @@ const addCards = (pageIndex) => {
     for (let i = startRange + 1; i <= endRange; i++) {
 
         //PUXA UM PERFIL DO BANCO AQUI
-        createPerfilLista(i);
+        createPerfilLista(i, false);
 
     }
 
@@ -46,7 +75,7 @@ const addCards = (pageIndex) => {
 
 window.onload = function () {
 
-    addCards(currentPage);
+    addCardsInicial(currentPage);
 
 };
 
@@ -56,7 +85,7 @@ const handleInfiniteScroll = () => {
 
         const endOfPage =
 
-            window.innerHeight + window.pageYOffset >= document.body.offsetHeight;
+            window.innerHeight + window.scrollY - 250 >= document.body.offsetHeight;
 
         if (endOfPage) {
 
