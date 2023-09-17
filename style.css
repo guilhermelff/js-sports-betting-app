@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro|Nunito&display=swap');
 
+#img-perfil, #img-perfil-grande{
+    width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .perfil-lista {
       transition: all 200ms ease-in-out;
 

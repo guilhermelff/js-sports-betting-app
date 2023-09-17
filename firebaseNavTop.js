@@ -1,6 +1,6 @@
 // Add Firebase products that you want to use
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js'
-import { getStorage, ref } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js'
+import { getStorage, ref, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js'
 import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js'
 import { getFirestore, collection, getDocs, setDoc, doc, collectionGroup, query, where, getDoc, updateDoc, increment, addDoc } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js'
 
@@ -30,6 +30,43 @@ const perfilRef = ref(storage, 'perfil');
 const auth = getAuth();
 const db = getFirestore(app);
 
+async function getProfileImage(id, ext) {
+
+    var caminhoImg = "perfil/" + id + ext;
+
+    console.log(caminhoImg);
+
+    var reference = ref(storage, caminhoImg);
+
+    // Get the download URL
+    getDownloadURL(reference)
+        .then((url) => {
+            // Insert url into an <img> tag to "download"
+            const img = document.getElementById('img-perfil');
+            img.setAttribute('src', url);
+
+        })
+        .catch((error) => {
+            // A full list of error codes is available at
+            // https://firebase.google.com/docs/storage/web/handle-errors
+            switch (error.code) {
+                case 'storage/object-not-found':
+                    // File doesn't exist
+
+                    break;
+                case 'storage/unauthorized':
+                    // User doesn't have permission to access the object
+                    break;
+                case 'storage/canceled':
+                    // User canceled the upload
+                    break;
+                case 'storage/unknown':
+                    // Unknown error occurred, inspect the server response
+                    break;
+
+            }
+        });
+};
 
 async function getData(id) {
     const usuario = await getDoc(doc(db, "Usuarios", id));
@@ -49,6 +86,11 @@ async function getData(id) {
     console.log(pontos);
     const pontosUsuario = document.getElementById("pontos-usuario-nav");
     pontosUsuario.innerHTML = `${pontos}`;
+
+
+    const ext = usuarioData.imgExt;
+    // Get the download URL
+    getProfileImage(id, ext);
 
     return;
 };

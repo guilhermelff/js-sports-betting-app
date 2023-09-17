@@ -19,39 +19,43 @@
     <div class="row d-flex justify-content-center align-items-center">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
             <div class="card text-white" style="border-radius: 1rem;" id="card">
-                <div class="card-body text-center">
+                <div class="card-body">
                     <div class="">
 
-                        <p class="text-white-50 mb-5 mt-5 h5">Preencha os dados</p>
+                        <p class="text-white-50 mb-5 mt-5 h5 text-center">Preencha os dados</p>
 
                         <form id="form-registro">
                             <div class="form-outline form-white mb-3">
-                                <input class="form-control form-control-lg text-white-50" id="imgPerfil" type="file">
-                                <label for="imgPerfil" class="form-label">Imagem de perfil</label>
+                                <input class="form-control form-control-lg text-white-50" id="imgPerfil" type="file"
+                                    accept=".jpg,.jpeg,.png">
+
+                                <label for="imgPerfil" class="form-label mx-2 text-white-50">Imagem de perfil</label>
+
                             </div>
 
                             <div class="form-outline form-white mb-3">
                                 <input type="user" id="usuarioPerfil"
                                     class="form-control form-control-lg text-white-50" />
-                                <label class="form-label" for="usuarioPerfil">Nome de usuário</label>
+                                <label class="form-label mx-2 text-white-50" for="usuarioPerfil">Nome de usuário</label>
                             </div>
 
                             <div class="form-outline form-white mb-3">
                                 <input type="email" id="emailPerfil"
                                     class="form-control form-control-lg text-white-50" />
-                                <label class="form-label" for="emailPerfil">E-mail</label>
+                                <label class="form-label mx-2 text-white-50" for="emailPerfil">E-mail</label>
                             </div>
 
                             <div class="form-outline form-white mb-3">
                                 <input type="password" id="senhaPerfil"
                                     class="form-control form-control-lg text-white-50" />
-                                <label class="form-label" for="senhaPerfil">Senha</label>
+                                <label class="form-label mx-2 text-white-50" for="senhaPerfil">Senha</label>
                             </div>
 
                             <div class="form-outline form-white mb-3">
                                 <input type="password" id="repitaSenhaPerfil"
                                     class="form-control form-control-lg text-white-50" />
-                                <label class="form-label" for="repitaSenhaPerfil">Repita a senha</label>
+                                <label class="form-label mx-2 text-white-50" for="repitaSenhaPerfil">Repita a
+                                    senha</label>
                             </div>
 
                             <button class="btn btn-outline-light btn-lg px-4" type="submit" id="botaoRegistro">Criar
