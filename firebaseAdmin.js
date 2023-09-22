@@ -2,6 +2,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js'
 import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js'
 import { getFirestore, collection, getDocs, setDoc, doc, collectionGroup, query, where, getDoc, updateDoc, increment, addDoc } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js'
+import { quickSort } from './quick';
 
 
 //dados do banco
@@ -97,10 +98,17 @@ async function resolveApostasUsuario(uid) {
     atribuiPontuacao(uid, pontosSemana, greens, reds);
 };
 
+async function insereRanking(uid) {
+    var userRef = getDoc(db, "Usuarios", uid);
+    var userData = userRef.data();
+}
+
 // metodo para resolver as apostas feitas
 async function resolveApostas() {
     //acessa cada usuário
     usuarios.forEach((doc) => {
+
+        insereRanking(doc.id);
         //resolve as apostas do usuário
         resolveApostasUsuario(doc.id);
     });

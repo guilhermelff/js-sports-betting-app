@@ -11,24 +11,83 @@ const createPerfilLista = (index, inicial) => {
 
     if (inicial === false) {
         index += 15;
+        const card = document.createElement("div");
+        card.innerHTML = `<a href="perfil.html" class="list-group-item list-group-item-action perfil-lista"
+                                aria-current="true">
+                                <span class="chip comum">
+                                    ${index}
+                                </span>
+                                <span><img
+                                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                                    class="rounded-circle img-fluid" style="width: 25px;" /></span>
+                                @juliaalmeida
+                           </a>`;
+
+        cardContainer.appendChild(card);
     }
 
-    const card = document.createElement("div");
+    if (inicial === true) {
+        if (index === 1) {
+            const card = document.createElement("div");
+            card.innerHTML = `<a href="perfil.html" class="list-group-item list-group-item-action perfil-lista"
+                                    aria-current="true">
+                                    <span class="chip primary">
+                                        ${index}
+                                    </span>
+                                    <span><img
+                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                                        class="rounded-circle img-fluid" style="width: 25px;" /></span>
+                                    @juliaalmeida
+                              </a>`;
 
-    //ADICIONAR TRATAMENTO PARA PRIMEIRO SEGUNDO E TERCEIRO LUGAR OLHAR CHIPS NO CSS
+            cardContainer.appendChild(card);
+        }
+        else if (index === 2) {
+            const card = document.createElement("div");
+            card.innerHTML = `<a href="perfil.html" class="list-group-item list-group-item-action perfil-lista"
+                                    aria-current="true">
+                                    <span class="chip secondary">
+                                        ${index}
+                                    </span>
+                                    <span><img
+                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                                        class="rounded-circle img-fluid" style="width: 25px;" /></span>
+                                    @juliaalmeida
+                              </a>`;
 
-    card.innerHTML = `<a href="perfil.html" class="list-group-item list-group-item-action perfil-lista"
-        aria-current="true">
-        <span class="chip comum">
-            ${index}
-        </span>
-        <span><img
-            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-            class="rounded-circle img-fluid" style="width: 25px;" /></span>
-        @juliaalmeida
-    </a>`;
+            cardContainer.appendChild(card);
+        }
+        else if (index === 3) {
+            const card = document.createElement("div");
+            card.innerHTML = `<a href="perfil.html" class="list-group-item list-group-item-action perfil-lista"
+                                    aria-current="true">
+                                    <span class="chip terciary">
+                                        ${index}
+                                    </span>
+                                    <span><img
+                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                                        class="rounded-circle img-fluid" style="width: 25px;" /></span>
+                                    @juliaalmeida
+                              </a>`;
 
-    cardContainer.appendChild(card);
+            cardContainer.appendChild(card);
+        }
+        else {
+            const card = document.createElement("div");
+            card.innerHTML = `<a href="perfil.html" class="list-group-item list-group-item-action perfil-lista"
+                                aria-current="true">
+                                <span class="chip comum">
+                                    ${index}
+                                </span>
+                                <span><img
+                                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                                    class="rounded-circle img-fluid" style="width: 25px;" /></span>
+                                @juliaalmeida
+                           </a>`;
+
+            cardContainer.appendChild(card);
+        }
+    }
 
 };
 
