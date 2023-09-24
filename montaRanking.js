@@ -8,26 +8,53 @@ const cardIncrease = 5;
 const pageCount = Math.ceil(cardLimit / cardIncrease);
 let currentPage = 1;
 
-//melhoresSemana = puxarRanking("semana"); //array [[pontos, usuario, id], ...]
-//melhoresTemporada = puxarRanking("temporada");
+var rankingSemanal = [];
+var rankingTemporada = [];
+
+(async () => {
+    rankingSemanal = await loadRanking("Semanal");
+    rankingTemporada = await loadRanking("Temporada");
+    addCardsInicial(currentPage, periodo);
+})();
+
+var selectPeriodo = document.getElementById("periodo");
+var periodo = selectPeriodo.value;
+
+selectPeriodo.addEventListener("change", (event) => {
+    location.reload();
+});
+
 
 const createPerfilLista = (index, inicial, periodo) => {
 
-    var ranking = loadRanking(periodo); //array [[pontos, usuario, id], ...]
-    loadR
+    var ranking = [];
+
+    if (periodo == "Semanal") {
+        ranking = rankingSemanal;
+    }
+    if (periodo == "Temporada") {
+        ranking = rankingTemporada;
+    }
 
     if (inicial === false) {
         index += 15;
         const card = document.createElement("div");
         card.innerHTML = `<a href="perfil.html" class="list-group-item list-group-item-action perfil-lista"
                                 aria-current="true">
+
+                                <div class="d-flex justify-content-between">
+                                    <div>
                                 <span class="chip comum">
                                     ${index}
                                 </span>
                                 <span><img
-                                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                                    class="rounded-circle img-fluid" style="width: 25px;" /></span>
-                                @juliaalmeida
+                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                                        class="rounded-circle img-fluid" style="width: 25px;" /></span>
+                                    <span>@${ranking[index - 1][1]}</span>
+                                    </div>
+                                    <span>${ranking[index - 1][0]}</span>
+                                    </div>
+                                    
                            </a>`;
 
         cardContainer.appendChild(card);
@@ -60,13 +87,19 @@ const createPerfilLista = (index, inicial, periodo) => {
             const card = document.createElement("div");
             card.innerHTML = `<a href="perfil.html" class="list-group-item list-group-item-action perfil-lista"
                                     aria-current="true">
+                                    <div class="d-flex justify-content-between">
+                                    <div>
                                     <span class="chip secondary">
                                         ${index}
                                     </span>
                                     <span><img
                                         src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
                                         class="rounded-circle img-fluid" style="width: 25px;" /></span>
-                                    @juliaalmeida
+                                    <span>@${ranking[index - 1][1]}</span>
+                                    </div>
+                                    <span>${ranking[index - 1][0]}</span>
+                                    </div>
+                                    
                               </a>`;
 
             cardContainer.appendChild(card);
@@ -75,13 +108,19 @@ const createPerfilLista = (index, inicial, periodo) => {
             const card = document.createElement("div");
             card.innerHTML = `<a href="perfil.html" class="list-group-item list-group-item-action perfil-lista"
                                     aria-current="true">
+                                    <div class="d-flex justify-content-between">
+                                    <div>
                                     <span class="chip terciary">
                                         ${index}
                                     </span>
                                     <span><img
                                         src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
                                         class="rounded-circle img-fluid" style="width: 25px;" /></span>
-                                    @juliaalmeida
+                                    <span>@${ranking[index - 1][1]}</span>
+                                    </div>
+                                    <span>${ranking[index - 1][0]}</span>
+                                    </div>
+                                    
                               </a>`;
 
             cardContainer.appendChild(card);
@@ -90,13 +129,19 @@ const createPerfilLista = (index, inicial, periodo) => {
             const card = document.createElement("div");
             card.innerHTML = `<a href="perfil.html" class="list-group-item list-group-item-action perfil-lista"
                                 aria-current="true">
+                                <div class="d-flex justify-content-between">
+                                    <div>
                                 <span class="chip comum">
                                     ${index}
                                 </span>
                                 <span><img
-                                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                                    class="rounded-circle img-fluid" style="width: 25px;" /></span>
-                                @juliaalmeida
+                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                                        class="rounded-circle img-fluid" style="width: 25px;" /></span>
+                                    <span>@${ranking[index - 1][1]}</span>
+                                    </div>
+                                    <span>${ranking[index - 1][0]}</span>
+                                    </div>
+                                    
                            </a>`;
 
             cardContainer.appendChild(card);
@@ -106,6 +151,8 @@ const createPerfilLista = (index, inicial, periodo) => {
 };
 
 const addCardsInicial = (pageIndex, periodo) => {
+
+    console.log(periodo);
 
     var inicial = true;
 
@@ -148,7 +195,7 @@ const addCards = (pageIndex, periodo) => {
 
 window.onload = function () {
 
-    addCardsInicial(currentPage);
+
 
 };
 
@@ -162,7 +209,7 @@ const handleInfiniteScroll = () => {
 
         if (endOfPage) {
 
-            addCards(currentPage + 1);
+            addCards(currentPage + 1, periodo);
 
         }
 

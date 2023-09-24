@@ -1,7 +1,6 @@
 import { loadRanking } from "./scripts/ranking.js";
 
-
-async function lista() {
+(async () => {
     var rankingSemanal = await loadRanking("Semanal");
     var rankingTemporada = await loadRanking("Temporada");
 
@@ -9,7 +8,4 @@ async function lista() {
     console.log(rankingSemanal);
     console.log("Temporada");
     console.log(rankingTemporada);
-
-}
-
-lista();
+})();
