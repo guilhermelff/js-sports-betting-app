@@ -1,3 +1,5 @@
+import { loadRanking } from "./scripts/ranking.js";
+
 const cardContainer = document.getElementById("card-container");
 const loader = document.getElementById("loader");
 const cardLimit = 100;
@@ -6,8 +8,13 @@ const cardIncrease = 5;
 const pageCount = Math.ceil(cardLimit / cardIncrease);
 let currentPage = 1;
 
+//melhoresSemana = puxarRanking("semana"); //array [[pontos, usuario, id], ...]
+//melhoresTemporada = puxarRanking("temporada");
 
-const createPerfilLista = (index, inicial) => {
+const createPerfilLista = (index, inicial, periodo) => {
+
+    var ranking = loadRanking(periodo); //array [[pontos, usuario, id], ...]
+    loadR
 
     if (inicial === false) {
         index += 15;
@@ -31,13 +38,20 @@ const createPerfilLista = (index, inicial) => {
             const card = document.createElement("div");
             card.innerHTML = `<a href="perfil.html" class="list-group-item list-group-item-action perfil-lista"
                                     aria-current="true">
+
+                                    <div class="d-flex justify-content-between">
+                                    <div>
                                     <span class="chip primary">
                                         ${index}
                                     </span>
                                     <span><img
                                         src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
                                         class="rounded-circle img-fluid" style="width: 25px;" /></span>
-                                    @juliaalmeida
+                                    <span>@${ranking[index - 1][1]}</span>
+                                    </div>
+                                    <span>${ranking[index - 1][0]}</span>
+                                    </div>
+                                    
                               </a>`;
 
             cardContainer.appendChild(card);
@@ -91,7 +105,7 @@ const createPerfilLista = (index, inicial) => {
 
 };
 
-const addCardsInicial = (pageIndex) => {
+const addCardsInicial = (pageIndex, periodo) => {
 
     var inicial = true;
 
@@ -107,13 +121,13 @@ const addCardsInicial = (pageIndex) => {
 
         //PUXA UM PERFIL DO BANCO AQUI
 
-        createPerfilLista(i, inicial);
+        createPerfilLista(i, inicial, periodo);
 
     }
 
 };
 
-const addCards = (pageIndex) => {
+const addCards = (pageIndex, periodo) => {
 
     var inicial = false;
 
@@ -126,7 +140,7 @@ const addCards = (pageIndex) => {
     for (let i = startRange + 1; i <= endRange; i++) {
 
         //PUXA UM PERFIL DO BANCO AQUI
-        createPerfilLista(i, false);
+        createPerfilLista(i, false, periodo);
 
     }
 

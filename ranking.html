@@ -40,21 +40,24 @@
                     class="d-flex justify-content-between text-center mb-4 mt-2"
                   >
                     <div class="px-5">
-                      <p class="mb-2 h5">1</p>
+                      <p class="mb-2 h5" id="posicao">1</p>
                       <p class="text mb-0 text-white-50">Posição</p>
                     </div>
                     <div class="px-3 mt-2">
                       <select
                         class="form-select"
                         aria-label="Default select example"
+                        id="periodo"
                       >
-                        <option selected>Semanal</option>
-                        <option value="1">Temporada</option>
+                        <option selected value="semanal">Semanal</option>
+                        <option value="temporada">Temporada</option>
                       </select>
                     </div>
                   </div>
 
-                  <div class="list-group" id="card-container"></div>
+                  <div class="list-group" id="card-container">
+                    <!--  card são adicionados aqui  -->
+                  </div>
                 </div>
               </div>
             </div>
@@ -80,7 +83,7 @@
       includeHTML();
     </script>
     <script type="module" src="firebaseNavTop.js"></script>
-    <script type="module" src="animacaoLista.js"></script>
+    <script type="module" src="montaRanking.js"></script>
     <script type="module" src="firebaseRanking.js"></script>
   </body>
 </html>

@@ -2,8 +2,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js'
 import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js'
 import { getFirestore, collection, getDocs, setDoc, doc, collectionGroup, query, where, getDoc, updateDoc, increment, addDoc } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js'
-import { quickSort } from './scripts/quickSort/quick.js';
-import { montarRanking } from './scripts/ranking/firebaseRanking.js';
+
 
 
 //dados do banco
@@ -105,59 +104,13 @@ var melhoresTemporada = [];
 var qntSemana = 0;
 var qntTemporada = 0;
 
-async function insereRanking(userData) {
+async function insereRanking(userData, id) {
 
-
-
-    if (qntSemana < 100) {
-
-        melhoresSemana.push([userData.pontosSemana, userData.usuario]);
-
-        qntSemana += 1;
-
-    }
-
-    else if (qntSemana == 100) {
-        for (var i = 0; i < melhoresSemana.length; i++) {
-
-            if (userData.pontosSemana >= melhoresSemana[i][0]) {
-                melhoresSemana.splice(i, 0, [userData.pontosSemana, userData.usuario]);
-                melhoresSemana.pop();
-                break;
-            }
-
-        }
-    }
-
+    melhoresSemana.push([userData.pontosSemana, userData.usuario, id, userData.imgExt]);
     melhoresSemana = melhoresSemana.sort(function (a, b) { return b[0] - a[0] });
 
-
-
-    if (qntTemporada < 100) {
-
-        melhoresTemporada.push([userData.pontosTemporada, userData.usuario]);
-
-        qntTemporada += 1;
-
-    }
-
-    else if (qntTemporada == 100) {
-        for (var i = 0; i < melhoresTemporada.length; i++) {
-
-            if (userData.pontosTemporada >= melhoresTemporada[i]) {
-                melhoresTemporada.splice(i, 0, [userData.pontosTemporada, userData.usuario]);
-                melhoresTemporada.pop();
-                break;
-            }
-
-        }
-    }
-
+    melhoresTemporada.push([userData.pontosTemporada, userData.usuario, id, userData.imgExt]);
     melhoresTemporada = melhoresTemporada.sort(function (a, b) { return b[0] - a[0] });
-
-
-
-
 
 }
 
@@ -172,8 +125,8 @@ async function resolveApostas() {
 
         //insere no ranking
         var userData = document.data();
-
-        insereRanking(userData);
+        console.log(userData);
+        insereRanking(userData, document.id);
     })
 
     console.log("Temporada");

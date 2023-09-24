@@ -30,7 +30,7 @@ const storageRef = ref(storage);
 const perfilRef = ref(storage, 'perfil');
 
 
-async function getProfileImage(id, ext) {
+export async function getProfileImage(id, ext) {
 
     var caminhoImg = "perfil/" + id + ext;
 
