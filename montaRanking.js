@@ -1,5 +1,5 @@
 import { loadRanking } from "./scripts/ranking.js";
-import { getProfileImgUrl } from "./database/interfaces/database.js";
+import { getProfileImgUrl, getUserId } from "./database/interfaces/database.js";
 
 const cardContainer = document.getElementById("card-container");
 const loader = document.getElementById("loader");
@@ -14,30 +14,6 @@ var cardLimit = 0;
 var cardIncrease = 5;
 var cardIncreaseInitial = 0;
 
-(async () => {
-    rankingSemanal = await loadRanking("Semanal");
-    rankingTemporada = await loadRanking("Temporada");
-    console.log(rankingSemanal);
-
-    if (rankingSemanal.length < 21) {
-        cardIncreaseInitial = rankingSemanal.length;
-    }
-    else {
-        cardIncreaseInitial = 20;
-    }
-
-    cardLimit = rankingSemanal.length;
-
-
-    addCardsInicial(currentPage, periodo);
-})();
-
-var selectPeriodo = document.getElementById("periodo");
-var periodo = selectPeriodo.value;
-
-selectPeriodo.addEventListener("change", (event) => {
-    location.reload();
-});
 
 
 const createPerfilLista = async (index, inicial, periodo) => {
@@ -179,6 +155,25 @@ const createPerfilLista = async (index, inicial, periodo) => {
 
 };
 
+const addCards = async (pageIndex, periodo) => {
+
+    var inicial = false;
+
+    currentPage = pageIndex;
+
+    const startRange = (pageIndex - 1) * cardIncrease;
+
+    const endRange = currentPage == pageCount ? cardLimit : pageIndex * cardIncrease;
+
+    for (let i = startRange + 1; i <= endRange; i++) {
+
+        //PUXA UM PERFIL DO BANCO AQUI
+        await createPerfilLista(i, false, periodo);
+
+    }
+
+};
+
 const addCardsInicial = async (pageIndex, periodo) => {
 
     console.log(periodo);
@@ -203,24 +198,57 @@ const addCardsInicial = async (pageIndex, periodo) => {
 
 };
 
-const addCards = async (pageIndex, periodo) => {
+(async () => {
+    var selectPeriodo = document.getElementById("periodo");
+    var periodo = selectPeriodo.value;
+    selectPeriodo.addEventListener("change", (event) => {
+        location.reload();
+    });
 
-    var inicial = false;
+    rankingSemanal = await loadRanking("Semanal");
+    rankingTemporada = await loadRanking("Temporada");
+    console.log(rankingSemanal);
 
-    currentPage = pageIndex;
+    const userID = await getUserId();
+    console.log("ID USUARIO");
+    console.log(userID);
 
-    const startRange = (pageIndex - 1) * cardIncrease;
-
-    const endRange = currentPage == pageCount ? cardLimit : pageIndex * cardIncrease;
-
-    for (let i = startRange + 1; i <= endRange; i++) {
-
-        //PUXA UM PERFIL DO BANCO AQUI
-        await createPerfilLista(i, false, periodo);
-
+    if (periodo == "Semanal") {
+        for (var i = 0; i < rankingSemanal.length; i++) {
+            if (rankingSemanal[i][2] == userID) {
+                var posicao = i + 1;
+                break;
+            }
+        }
     }
 
-};
+    if (periodo == "Temporada") {
+        for (var i = 0; i < rankingTemporada.length; i++) {
+            if (rankingTemporada[i][2] == userID) {
+                var posicao = i + 1;
+                break;
+            }
+        }
+    }
+
+    const posRanking = document.getElementById("posicao");
+    posRanking.innerHTML = `${posicao}`;
+
+    console.log(posicao);
+
+    if (rankingSemanal.length < 21) {
+        cardIncreaseInitial = rankingSemanal.length;
+    }
+    else {
+        cardIncreaseInitial = 20;
+    }
+
+    cardLimit = rankingSemanal.length;
+
+    addCardsInicial(currentPage, periodo);
+})();
+
+
 
 
 const handleInfiniteScroll = async () => {
