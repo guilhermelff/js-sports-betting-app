@@ -1,4 +1,5 @@
-import { loadFirebaseRanking } from "../firebase/load.js";
+import { loadFirebaseRanking, getProfileImgUrlFirebase } from "../firebase/load.js";
+import { database } from "./settings.js";
 
 export async function loadRankingJSONFromDatabase(database, period) {
     if (database == "firebase") {
@@ -7,3 +8,13 @@ export async function loadRankingJSONFromDatabase(database, period) {
     };
 
 }
+
+export async function getProfileImgUrl(userId, fileExt) {
+    if (database == "firebase") {
+        const url = await getProfileImgUrlFirebase(userId, fileExt);
+        console.log(url);
+        return url;
+    }
+
+}
+

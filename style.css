@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro|Nunito&display=swap');
 
-#img-perfil, #img-perfil-grande{
+
+
+#img-perfil, #img-perfil-grande, #img-ranking{
     width: 100%;
   height: 100%;
   object-fit: cover;

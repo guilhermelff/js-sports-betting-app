@@ -1,19 +1,34 @@
 import { loadRanking } from "./scripts/ranking.js";
+import { getProfileImgUrl } from "./database/interfaces/database.js";
 
 const cardContainer = document.getElementById("card-container");
 const loader = document.getElementById("loader");
-const cardLimit = 100;
-const cardIncreaseInitial = 20;
-const cardIncrease = 5;
+
 const pageCount = Math.ceil(cardLimit / cardIncrease);
 let currentPage = 1;
 
 var rankingSemanal = [];
 var rankingTemporada = [];
 
+var cardLimit = 0;
+var cardIncrease = 5;
+var cardIncreaseInitial = 0;
+
 (async () => {
     rankingSemanal = await loadRanking("Semanal");
     rankingTemporada = await loadRanking("Temporada");
+    console.log(rankingSemanal);
+
+    if (rankingSemanal.length < 21) {
+        cardIncreaseInitial = rankingSemanal.length;
+    }
+    else {
+        cardIncreaseInitial = 20;
+    }
+
+    cardLimit = rankingSemanal.length;
+
+
     addCardsInicial(currentPage, periodo);
 })();
 
@@ -25,7 +40,7 @@ selectPeriodo.addEventListener("change", (event) => {
 });
 
 
-const createPerfilLista = (index, inicial, periodo) => {
+const createPerfilLista = async (index, inicial, periodo) => {
 
     var ranking = [];
 
@@ -34,6 +49,24 @@ const createPerfilLista = (index, inicial, periodo) => {
     }
     if (periodo == "Temporada") {
         ranking = rankingTemporada;
+    }
+
+    var id = ranking[index - 1][2];
+    var ext = ranking[index - 1][3];
+
+    console.log(id);
+    console.log(ext);
+
+    if (ext == null) {
+        var img = "<i class='fa-solid fa-circle-user fa-xl' style='width: 25px;'></i>";
+    }
+    else {
+        var imgUrl = await getProfileImgUrl(id, ext);
+        console.log(imgUrl);
+        var img = `<img
+            src="${imgUrl}"
+            class="rounded-circle img-fluid" style="width: 25px;"
+            id="img-ranking" />`
     }
 
     if (inicial === false) {
@@ -47,9 +80,8 @@ const createPerfilLista = (index, inicial, periodo) => {
                                 <span class="chip comum">
                                     ${index}
                                 </span>
-                                <span><img
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                                        class="rounded-circle img-fluid" style="width: 25px;" /></span>
+                                <span>${img}
+                                </span>
                                     <span>@${ranking[index - 1][1]}</span>
                                     </div>
                                     <span>${ranking[index - 1][0]}</span>
@@ -71,9 +103,9 @@ const createPerfilLista = (index, inicial, periodo) => {
                                     <span class="chip primary">
                                         ${index}
                                     </span>
-                                    <span><img
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                                        class="rounded-circle img-fluid" style="width: 25px;" /></span>
+                                    <span>${img}
+                                </span>
+                                
                                     <span>@${ranking[index - 1][1]}</span>
                                     </div>
                                     <span>${ranking[index - 1][0]}</span>
@@ -92,9 +124,8 @@ const createPerfilLista = (index, inicial, periodo) => {
                                     <span class="chip secondary">
                                         ${index}
                                     </span>
-                                    <span><img
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                                        class="rounded-circle img-fluid" style="width: 25px;" /></span>
+                                    <span>${img}
+                                </span>
                                     <span>@${ranking[index - 1][1]}</span>
                                     </div>
                                     <span>${ranking[index - 1][0]}</span>
@@ -113,9 +144,8 @@ const createPerfilLista = (index, inicial, periodo) => {
                                     <span class="chip terciary">
                                         ${index}
                                     </span>
-                                    <span><img
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                                        class="rounded-circle img-fluid" style="width: 25px;" /></span>
+                                    <span>${img}
+                                </span>
                                     <span>@${ranking[index - 1][1]}</span>
                                     </div>
                                     <span>${ranking[index - 1][0]}</span>
@@ -134,9 +164,8 @@ const createPerfilLista = (index, inicial, periodo) => {
                                 <span class="chip comum">
                                     ${index}
                                 </span>
-                                <span><img
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                                        class="rounded-circle img-fluid" style="width: 25px;" /></span>
+                                <span>${img}
+                                </span>
                                     <span>@${ranking[index - 1][1]}</span>
                                     </div>
                                     <span>${ranking[index - 1][0]}</span>
@@ -150,7 +179,7 @@ const createPerfilLista = (index, inicial, periodo) => {
 
 };
 
-const addCardsInicial = (pageIndex, periodo) => {
+const addCardsInicial = async (pageIndex, periodo) => {
 
     console.log(periodo);
 
@@ -168,13 +197,13 @@ const addCardsInicial = (pageIndex, periodo) => {
 
         //PUXA UM PERFIL DO BANCO AQUI
 
-        createPerfilLista(i, inicial, periodo);
+        await createPerfilLista(i, inicial, periodo);
 
     }
 
 };
 
-const addCards = (pageIndex, periodo) => {
+const addCards = async (pageIndex, periodo) => {
 
     var inicial = false;
 
@@ -187,21 +216,16 @@ const addCards = (pageIndex, periodo) => {
     for (let i = startRange + 1; i <= endRange; i++) {
 
         //PUXA UM PERFIL DO BANCO AQUI
-        createPerfilLista(i, false, periodo);
+        await createPerfilLista(i, false, periodo);
 
     }
 
 };
 
-window.onload = function () {
 
+const handleInfiniteScroll = async () => {
 
-
-};
-
-const handleInfiniteScroll = () => {
-
-    throttle(() => {
+    throttle(async () => {
 
         const endOfPage =
 
@@ -209,7 +233,7 @@ const handleInfiniteScroll = () => {
 
         if (endOfPage) {
 
-            addCards(currentPage + 1, periodo);
+            await addCards(currentPage + 1, periodo);
 
         }
 

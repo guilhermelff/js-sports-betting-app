@@ -52,7 +52,10 @@ export async function getProfileImage(id, ext) {
             switch (error.code) {
                 case 'storage/object-not-found':
                     // File doesn't exist
-
+                    const img = document.getElementById('img-perfil-grande');
+                    img.style.display = 'none';
+                    const icon = document.getElementById('usuario-perfil-grande');
+                    icon.style.display = "block";
                     break;
                 case 'storage/unauthorized':
                     // User doesn't have permission to access the object
