@@ -76,6 +76,37 @@ async function getData(id) {
     const usuario = await getDoc(doc(db, "Usuarios", id));
     const usuarioData = usuario.data();
 
+    const alertContainer = document.getElementById("alert-container");
+    console.log("alertaContainer");
+    console.log(alertContainer);
+
+    var alerts = await getDocs(collection(db, "Usuarios", id, "Alertas"));
+    alerts.forEach((docAlert) => {
+
+        var docRef = doc(db, "Usuarios", id, "Alertas", docAlert.id);
+
+        var alert = docAlert.data();
+        console.log("alerta");
+        console.log(alert);
+
+        const alerta = document.createElement("div");
+        alerta.innerHTML = `  <div class="mt-1">
+                            <i class="fa-solid fa-circle-user fa-xl" style="width: 25px"></i>
+                            <span>@teste</span>
+                            <span>quer te adicionar como amigoooooo</span>
+                            </div>
+                            <div>
+                            <button class="btn" id="aceita">
+                                <i class="fa-solid fa-check mx-1"></i>
+                            </button>
+                            <button class="btn" id="recusa">
+                                <i class="fa-solid fa-xmark mx-1"></i>
+                            </button>
+                            </div>`;
+
+        alertContainer.appendChild(alerta);
+    });
+
     const greens = usuarioData.greens;
     console.log(greens);
     const greensUsuario = document.getElementById("greens-usuario-nav");

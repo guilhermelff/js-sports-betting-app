@@ -1,11 +1,7 @@
 import { loadRanking } from "./scripts/ranking.js";
+import { addAlert } from "./scripts/alert.js";
+import { getProfileImgUrl, getUserId } from "./database/interfaces/database.js";
 
-(async () => {
-    var rankingSemanal = await loadRanking("Semanal");
-    var rankingTemporada = await loadRanking("Temporada");
+const userID = await getUserId();
 
-    console.log("Semanal");
-    console.log(rankingSemanal);
-    console.log("Temporada");
-    console.log(rankingTemporada);
-})();
+console.log(addAlert(userID));
