@@ -919,5 +919,3 @@ selectJogador2Elements.forEach(function (select) {
         previousSelection2[jogo] = selecao;
     });
 });
-
-

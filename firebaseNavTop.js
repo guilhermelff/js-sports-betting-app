@@ -1,8 +1,10 @@
 // Add Firebase products that you want to use
+import { getProfileImgUrl, getUserId } from "./database/interfaces/database.js";
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js'
 import { getStorage, ref, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js'
 import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js'
 import { getFirestore, collection, getDocs, setDoc, doc, collectionGroup, query, where, getDoc, updateDoc, increment, addDoc } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js'
+import { addFriend } from "./database/interfaces/database.js";
 
 
 //dados do banco
@@ -29,6 +31,8 @@ const perfilRef = ref(storage, 'perfil');
 //auth and firestore references
 const auth = getAuth();
 const db = getFirestore(app);
+
+
 
 async function getProfileImage(id, ext) {
 
@@ -72,6 +76,8 @@ async function getProfileImage(id, ext) {
         });
 };
 
+
+
 async function getData(id) {
     const usuario = await getDoc(doc(db, "Usuarios", id));
     const usuarioData = usuario.data();
@@ -81,7 +87,7 @@ async function getData(id) {
     console.log(alertContainer);
 
     var alerts = await getDocs(collection(db, "Usuarios", id, "Alertas"));
-    alerts.forEach((docAlert) => {
+    alerts.forEach(async (docAlert) => {
 
         var docRef = doc(db, "Usuarios", id, "Alertas", docAlert.id);
 
@@ -89,23 +95,42 @@ async function getData(id) {
         console.log("alerta");
         console.log(alert);
 
+        var imgUrl = await getProfileImgUrl(alert.amigoID, alert.imgExt);
+        console.log(imgUrl);
+        var img = `<img
+            src="${imgUrl}"
+            class="rounded-circle img-fluid" style="width: 35px;"
+            id="img-ranking"
+            alt="-" />`
+
         const alerta = document.createElement("div");
-        alerta.innerHTML = `  <div class="mt-1">
-                            <i class="fa-solid fa-circle-user fa-xl" style="width: 25px"></i>
-                            <span>@teste</span>
-                            <span>quer te adicionar como amigoooooo</span>
+        alerta.innerHTML = `
+                            <div
+                                class="modal-body d-flex justify-content-between"
+                                >
+                            <div class="mt-1">
+                            ${img}
+                            <span>@${alert.amigoUsuario}</span>
+                            <span>quer te adicionar como amigo</span>
                             </div>
                             <div>
-                            <button class="btn" id="aceita">
+                            <button class="btn" id="aceita" value="${alert.amigoID}">
                                 <i class="fa-solid fa-check mx-1"></i>
                             </button>
-                            <button class="btn" id="recusa">
+                            <button class="btn" id="recusa" >
                                 <i class="fa-solid fa-xmark mx-1"></i>
                             </button>
-                            </div>`;
+                            </div>
+                            </div><hr />`;
 
         alertContainer.appendChild(alerta);
+
+
+
+
     });
+
+
 
     const greens = usuarioData.greens;
     console.log(greens);
@@ -131,7 +156,7 @@ async function getData(id) {
 };
 
 //keep track of user logged in or out
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
 
     //usuario logou
     if (user) {
@@ -141,7 +166,10 @@ onAuthStateChanged(auth, (user) => {
         console.log(user);
         var uid = user.uid;
 
-        getData(uid);
+        await getData(uid);
+
+        document.getElementById("aceita").addEventListener("click", console.log("teste"));
+
 
     }
 
@@ -154,3 +182,4 @@ onAuthStateChanged(auth, (user) => {
 
     }
 });
+

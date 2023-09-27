@@ -57,27 +57,8 @@
             ></button>
           </div>
           <hr />
-          <div
-            class="modal-body d-flex justify-content-between"
-            id="alert-container"
-          >
-            <div class="mt-1">
-              <i class="fa-solid fa-circle-user fa-xl" style="width: 25px"></i>
-              <span>@teste</span>
-              <span>quer te adicionar como amigo</span>
-            </div>
-            <div>
-              <button class="btn" id="aceita">
-                <i class="fa-solid fa-check mx-1"></i>
-              </button>
-              <button class="btn" id="recusa">
-                <i class="fa-solid fa-xmark mx-1"></i>
-              </button>
-            </div>
-          </div>
-          <hr />
-          <div class="modal-body">...</div>
-          <hr />
+          <div id="alert-container">
+          
         </div>
       </div>
     </div>
@@ -95,5 +76,8 @@
       includeHTML();
     </script>
     <script src="alert.js"></script>
+    <script type="module" src="database\interfaces\database.js"></script>
+    <script type="module" src="scripts\addFriend.js"></script>
+    
   </body>
 </html>

@@ -1,4 +1,5 @@
 import { loadFirebaseRanking, getProfileImgUrlFirebase, getUserIdFirebase } from "../firebase/load.js";
+import { addFriendFirebase } from "../firebase/upload.js";
 import { database } from "./settings.js";
 
 export async function loadRankingJSONFromDatabase(database, period) {
@@ -24,3 +25,14 @@ export async function getUserId() {
     }
 }
 
+export async function addFriend(friendId) {
+    if (database == "firebase") {
+        const userId = await getUserIdFirebase();
+        addFriendFirebase(userId, friendId);
+
+    }
+}
+
+window.onload = function () {
+
+};
