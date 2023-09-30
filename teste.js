@@ -1,7 +1,6 @@
-import { loadRanking } from "./scripts/ranking.js";
-import { addAlert } from "./scripts/alert.js";
-import { getProfileImgUrl, getUserId } from "./database/interfaces/database.js";
 
-const userID = await getUserId();
+import { auth } from "./database/firebase/settings.js";
+import { getStorage, ref, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js'
+import { getFirestore, collection, getDocs, setDoc, doc, collectionGroup, query, where, getDoc, updateDoc, increment, addDoc } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js'
+import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js'
 
-console.log(addAlert(userID));

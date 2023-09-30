@@ -4,7 +4,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebas
 import { getStorage, ref, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js'
 import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js'
 import { getFirestore, collection, getDocs, setDoc, doc, collectionGroup, query, where, getDoc, updateDoc, increment, addDoc } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js'
-import { addFriend } from "./database/interfaces/database.js";
+
 
 
 //dados do banco
@@ -81,56 +81,6 @@ async function getProfileImage(id, ext) {
 async function getData(id) {
     const usuario = await getDoc(doc(db, "Usuarios", id));
     const usuarioData = usuario.data();
-
-    const alertContainer = document.getElementById("alert-container");
-    console.log("alertaContainer");
-    console.log(alertContainer);
-
-    var alerts = await getDocs(collection(db, "Usuarios", id, "Alertas"));
-    alerts.forEach(async (docAlert) => {
-
-        var docRef = doc(db, "Usuarios", id, "Alertas", docAlert.id);
-
-        var alert = docAlert.data();
-        console.log("alerta");
-        console.log(alert);
-
-        var imgUrl = await getProfileImgUrl(alert.amigoID, alert.imgExt);
-        console.log(imgUrl);
-        var img = `<img
-            src="${imgUrl}"
-            class="rounded-circle img-fluid" style="width: 35px;"
-            id="img-ranking"
-            alt="-" />`
-
-        const alerta = document.createElement("div");
-        alerta.innerHTML = `
-                            <div
-                                class="modal-body d-flex justify-content-between"
-                                >
-                            <div class="mt-1">
-                            ${img}
-                            <span>@${alert.amigoUsuario}</span>
-                            <span>quer te adicionar como amigo</span>
-                            </div>
-                            <div>
-                            <button class="btn" id="aceita" value="${alert.amigoID}">
-                                <i class="fa-solid fa-check mx-1"></i>
-                            </button>
-                            <button class="btn" id="recusa" >
-                                <i class="fa-solid fa-xmark mx-1"></i>
-                            </button>
-                            </div>
-                            </div><hr />`;
-
-        alertContainer.appendChild(alerta);
-
-
-
-
-    });
-
-
 
     const greens = usuarioData.greens;
     console.log(greens);

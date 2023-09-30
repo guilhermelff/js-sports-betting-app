@@ -13,14 +13,16 @@ export async function loadRankingJSONFromDatabase(database, period) {
 export async function getProfileImgUrl(userId, fileExt) {
     if (database == "firebase") {
         const url = await getProfileImgUrlFirebase(userId, fileExt);
-        console.log(url);
-        return url;
+        if (url) return url;
+        else return null;
     }
 }
 
 export async function getUserId() {
     if (database == "firebase") {
         const userId = await getUserIdFirebase();
+        console.log("GET USER ID");
+        console.log(userId);
         return userId;
     }
 }
@@ -32,7 +34,3 @@ export async function addFriend(friendId) {
 
     }
 }
-
-window.onload = function () {
-
-};

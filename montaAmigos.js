@@ -1,5 +1,9 @@
 import { loadRanking } from "./scripts/ranking.js";
+import { auth, db } from '../database/firebase/settings.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js'
 import { getProfileImgUrl, getUserId } from "./database/interfaces/database.js";
+import { getFirestore, collection, getDocs, setDoc, doc, collectionGroup, query, where, deleteDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js'
+
 
 const cardContainer = document.getElementById("card-container");
 const loader = document.getElementById("loader");
@@ -9,30 +13,34 @@ let currentPage = 1;
 
 var rankingSemanal = [];
 var rankingTemporada = [];
+var amigos = [];
+var rankingAmigosSemanal = [];
+var rankingAmigosTemporada = [];
 
 var cardLimit = 0;
 var cardIncrease = 5;
 var cardIncreaseInitial = 0;
 
-var selectPeriodo = document.getElementById("periodo");
-var periodo = selectPeriodo.value;
-selectPeriodo.addEventListener("change", (event) => {
-    location.reload();
-});
+
 
 const createPerfilLista = async (index, inicial, periodo) => {
 
     var ranking = [];
 
     if (periodo == "Semanal") {
-        ranking = rankingSemanal;
+        ranking = rankingAmigosSemanal;
     }
     if (periodo == "Temporada") {
-        ranking = rankingTemporada;
+        ranking = rankingAmigosTemporada;
     }
 
-    var id = ranking[index - 1][2];
-    var ext = ranking[index - 1][3];
+    console.log(periodo)
+    console.log("RANKING FINAL");
+    console.log(ranking);
+
+
+    var id = ranking[index - 1][3];
+    var ext = ranking[index - 1][2];
 
     console.log(id);
     console.log(ext);
@@ -62,9 +70,9 @@ const createPerfilLista = async (index, inicial, periodo) => {
                                 </span>
                                 <span>${img}
                                 </span>
-                                    <span>@${ranking[index - 1][1]}</span>
+                                    <span>@${ranking[index - 1][0]}</span>
                                     </div>
-                                    <span>${ranking[index - 1][0]}</span>
+                                    <span>${ranking[index - 1][1]}</span>
                                     </div>
                                     
                            </a>`;
@@ -86,9 +94,9 @@ const createPerfilLista = async (index, inicial, periodo) => {
                                     <span>${img}
                                 </span>
                                 
-                                    <span>@${ranking[index - 1][1]}</span>
+                                    <span>@${ranking[index - 1][0]}</span>
                                     </div>
-                                    <span>${ranking[index - 1][0]}</span>
+                                    <span>${ranking[index - 1][1]}</span>
                                     </div>
                                     
                               </a>`;
@@ -106,9 +114,9 @@ const createPerfilLista = async (index, inicial, periodo) => {
                                     </span>
                                     <span>${img}
                                 </span>
-                                    <span>@${ranking[index - 1][1]}</span>
+                                    <span>@${ranking[index - 1][0]}</span>
                                     </div>
-                                    <span>${ranking[index - 1][0]}</span>
+                                    <span>${ranking[index - 1][1]}</span>
                                     </div>
                                     
                               </a>`;
@@ -126,9 +134,9 @@ const createPerfilLista = async (index, inicial, periodo) => {
                                     </span>
                                     <span>${img}
                                 </span>
-                                    <span>@${ranking[index - 1][1]}</span>
+                                    <span>@${ranking[index - 1][0]}</span>
                                     </div>
-                                    <span>${ranking[index - 1][0]}</span>
+                                    <span>${ranking[index - 1][1]}</span>
                                     </div>
                                     
                               </a>`;
@@ -146,9 +154,9 @@ const createPerfilLista = async (index, inicial, periodo) => {
                                 </span>
                                 <span>${img}
                                 </span>
-                                    <span>@${ranking[index - 1][1]}</span>
+                                    <span>@${ranking[index - 1][0]}</span>
                                     </div>
-                                    <span>${ranking[index - 1][0]}</span>
+                                    <span>${ranking[index - 1][1]}</span>
                                     </div>
                                     
                            </a>`;
@@ -205,6 +213,14 @@ const addCardsInicial = async (pageIndex, periodo) => {
 (async () => {
 
 
+    var selectPeriodo = document.getElementById("periodo-amigo");
+    var periodo = selectPeriodo.value;
+    selectPeriodo.addEventListener("change", async (event) => {
+        await location.reload();
+    });
+
+
+
     rankingSemanal = await loadRanking("Semanal");
     rankingTemporada = await loadRanking("Temporada");
     console.log(rankingSemanal);
@@ -213,40 +229,60 @@ const addCardsInicial = async (pageIndex, periodo) => {
     console.log("ID USUARIO");
     console.log(userID);
 
+    var amigosBanco = await getDocs(collection(db, "Usuarios", userID, "Amigos"));
+
+    amigosBanco.forEach(async (docAmigo) => {
+        var amigo = docAmigo.data();
+        var amigoID = amigo.id;
+        amigos.push(amigoID);
+    });
+
     if (periodo == "Semanal") {
-        for (var i = 0; i < rankingSemanal.length; i++) {
-            if (rankingSemanal[i][2] == userID) {
-                var posicao = i + 1;
-                break;
-            }
+        for (var i = 0; i < amigos.length; i++) {
+            var amigoSemanal = await getDoc(doc(db, "Usuarios", amigos[i]));
+            var data = amigoSemanal.data();
+            rankingAmigosSemanal.push([data.usuario, data.pontosSemana, data.imgExt, amigos[i]]);
+            rankingAmigosSemanal = rankingAmigosSemanal.sort(function (a, b) { return b[1] - a[1] });
         }
+        var eu = await getDoc(doc(db, "Usuarios", userID));
+
+        var data = eu.data();
+        rankingAmigosSemanal.push([data.usuario, data.pontosSemana, data.imgExt, userID]);
+        rankingAmigosSemanal = rankingAmigosSemanal.sort(function (a, b) { return b[1] - a[1] });
     }
 
     if (periodo == "Temporada") {
-        for (var i = 0; i < rankingTemporada.length; i++) {
-            if (rankingTemporada[i][2] == userID) {
-                var posicao = i + 1;
-                break;
-            }
+        for (var i = 0; i < amigos.length; i++) {
+            var amigoTemporada = await getDoc(doc(db, "Usuarios", amigos[i]));
+            var data = amigoTemporada.data();
+            rankingAmigosTemporada.push([data.usuario, data.pontosTemporada, data.imgExt, amigos[i]]);
+            rankingAmigosTemporada = rankingAmigosTemporada.sort(function (a, b) { return b[1] - a[1] });
         }
+        var eu = await getDoc(doc(db, "Usuarios", userID));
+        var data = eu.data();
+        rankingAmigosTemporada.push([data.usuario, data.pontosTemporada, data.imgExt, userID]);
+        rankingAmigosTemporada = rankingAmigosTemporada.sort(function (a, b) { return b[1] - a[1] });
     }
 
-    const posRanking = document.getElementById("posicao");
-    posRanking.innerHTML = `${posicao}`;
-
-    console.log(posicao);
-
-    if (rankingSemanal.length < 21) {
-        cardIncreaseInitial = rankingSemanal.length;
+    if (rankingAmigosSemanal.length < 21 && rankingAmigosSemanal.length > 0) {
+        cardIncreaseInitial = rankingAmigosSemanal.length;
+    }
+    else if (rankingAmigosTemporada.length < 21 && rankingAmigosTemporada.length > 0) {
+        cardIncreaseInitial = rankingAmigosTemporada.length;
     }
     else {
         cardIncreaseInitial = 20;
     }
 
-    cardLimit = rankingSemanal.length;
+    console.log("TEMPOPRADA");
+    console.log(rankingAmigosTemporada);
+    console.log(periodo);
+
+    cardLimit = rankingAmigosSemanal.length;
 
     addCardsInicial(currentPage, periodo);
 })();
+
 
 
 

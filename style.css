@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro|Nunito&display=swap');
 
+#notification-text {
 
+    font-size: 12px;
+    
+}
 
 #img-perfil, #img-perfil-grande, #img-ranking{
     width: 100%;
@@ -8,10 +12,39 @@
   object-fit: cover;
 }
 
+#img-alerta {
+    width: 40px;
+}
+
+#img-notification {
+    position:relative;
+    left: -3px;
+}
+
+.aceita:hover {
+    color: green;
+    background-color: green;
+}
+
+.recusa:hover {
+    color: red;
+    background-color: red;
+}
+
+#botao-notifica {
+    position: relative;
+    right: -5px;
+}
+
 .perfil-lista {
       transition: all 200ms ease-in-out;
 
 }
+
+#aceita, #recusa {
+    border: 2px white solid;
+}
+
 
 .skeleton-card {
   transition: all 200ms ease-in-out;
