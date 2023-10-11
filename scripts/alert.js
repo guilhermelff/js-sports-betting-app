@@ -12,8 +12,15 @@ async function aceitaAmizade(idAmigo, idAlerta, id) {
 
     }).then(async () => {
 
+        await setDoc(doc(collection(db, "Usuarios", idAmigo, "Amigos"), id), {
+
+            id: id
+
+        })
+
         await deleteDoc(doc(db, "Usuarios", id, "Alertas", idAlerta));
-        this.style.display = "none";
+        console.log("amigo adicionado")
+
 
     });
 }
@@ -46,7 +53,7 @@ onAuthStateChanged(auth, (user) => {
 
                 const alerta = document.createElement("div");
                 alerta.innerHTML = `
-                            <div class="row">
+                            <div class="row" id="${alert.alertaID}">
                                 <div class=" mb-4">
                                     <div class="card">
                                         <div class="card-body">
@@ -89,13 +96,30 @@ onAuthStateChanged(auth, (user) => {
 
         console.log(aceitas);
 
-        for (let i = 0; i < aceitas.length; i++) {
-            console.log(aceitas[i].value);
-            console.log(aceitas[i].getAttribute('data-alerta'));
-            console.log(aceitas[i].getAttribute('data-user'));
-            aceitas[i].addEventListener("click", aceitaAmizade(aceitas[i].value, aceitas[i].getAttribute('data-alerta'), aceitas[i].getAttribute('data-user')));
-            console.log("evento adicionado");
-        }
+        document.querySelectorAll('.aceita').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                console.log("clique");
+                await aceitaAmizade(btn.value, btn.getAttribute('data-alerta'), btn.getAttribute('data-user'));
+                window.location.href = 'notifica.html';
+
+            });
+        });
+        /*
+                for (let i = 0; i < aceitas.length; i++) {
+                    console.log(aceitas[i].value);
+                    console.log(aceitas[i].getAttribute('data-alerta'));
+                    console.log(aceitas[i].getAttribute('data-user'));
+        
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        aceitaAmizade(aceitas[i].value, aceitas[i].getAttribute('data-alerta'), aceitas[i].getAttribute('data-user'));
+        
+                    });
+        
+                    console.log("evento adicionado");
+                }
+        */
 
     });
 });

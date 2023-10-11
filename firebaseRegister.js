@@ -33,6 +33,7 @@ const storageRef = ref(storage);
 
 // user database
 const usuarios = collection(db, "Usuarios");
+const hashUsuarios = collection(db, "hashUsuarios");
 
 
 
@@ -63,19 +64,24 @@ if (document.querySelector('#form-registro') != null) {
 
                     console.log(cred);
 
+                    return setDoc(doc(hashUsuarios, usuario), {
 
-
-                    return setDoc(doc(usuarios, cred.user.uid), {
-
-                        email: email,
-                        usuario: usuario,
-                        greens: 0,
-                        pontosSemana: 0,
-                        pontosTemporada: 0,
-                        reds: 0,
-                        imgExt: img.substr(img.indexOf('.'))
+                        id: cred.user.uid
 
                     }).then(() => {
+
+                        setDoc(doc(usuarios, cred.user.uid), {
+
+                            email: email,
+                            usuario: usuario,
+                            id: cred.user.uid,
+                            greens: 0,
+                            pontosSemana: 0,
+                            pontosTemporada: 0,
+                            reds: 0,
+                            imgExt: img.substr(img.indexOf('.'))
+
+                        })
 
                         var imgExt = img.substr(img.indexOf('.'));
 

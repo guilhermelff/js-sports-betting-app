@@ -14,3 +14,22 @@ export async function addFriendFirebase(userId, friendId) {
         alert("Amigo adicionado")
     });
 }
+
+export async function sendInviteFirebase(friendId, userId, userName) {
+
+    var alertId = friendId + "-" + userName;
+    console.log(alertId);
+
+    setDoc(doc(db, "Usuarios", friendId, "Alertas", alertId), {
+
+        amigoID: userId,
+        amigoUsuario: userName,
+        tipo: "addAmigo",
+        alertaID: alertId
+
+
+    }).then(() => {
+
+        alert("Convite enviado")
+    });
+}
