@@ -486,7 +486,7 @@ i {
 
 
 
-#select-jogador-1, #select-casa, #select-fora, #select-time {
+#select-jogador-1, #select-casa, #select-fora, #select-time,  #select-liga {
 
             font-size: 10px;
            
@@ -546,6 +546,11 @@ i {
 
 #select-jogador-label {
     font-size: 10px;
+}
+
+#select-liga {
+    scale: 1.4;
+    width: 200px;
 }
 
 

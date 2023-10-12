@@ -44,36 +44,38 @@
             <div class="card text-white" style="border-radius: 1rem" id="card">
               <div class="card-body p-5 text-center">
                 <div class="mb-md-5 mt-md-4 pb-5">
-                  <p class="text-white-50 mb-5 h5">Crie sua Liga</p>
-
-                  <form id="form-liga">
-                    <div class="form-outline form-white mb-4">
-                      <input
-                        class="form-control form-control-lg text-white-50"
-                        id="imgLiga"
-                        type="file"
-                      />
-                      <label for="imgLiga" class="form-label"
-                        >Imagem da Liga</label
-                      >
-                    </div>
-
-                    <div class="form-outline form-white mb-4">
-                      <input
-                        type="user"
-                        id="nomeLiga"
-                        class="form-control text-white-50"
-                      />
-                      <label class="form-label" for="nomeLiga">Nome</label>
-                    </div>
-
-                    <button
-                      class="btn btn-outline-light btn-lg px-5"
-                      type="submit"
+                  <div class="d-flex justify-content-center align-items-center">
+                    <select
+                      id="select-liga"
+                      class="form-select text-white-50 mb-5 mt-5"
                     >
-                      Criar Liga
+                      <option class="btn-selection" data-liga="vazio">
+                        Selecione uma Liga
+                      </option>
+                    </select>
+                  </div>
+                  <p class="text-white-50 mb-4 h5">
+                    Convide usuários para sua Liga
+                  </p>
+
+                  <form class="d-flex" id="pesquisa">
+                    <input
+                      class="form-control me-2 text-white"
+                      type="search"
+                      aria-label="Search"
+                      id="usuario-pesquisa"
+                    />
+                    <button class="btn pesquisa">
+                      <i class="fa-solid fa-magnifying-glass icone"></i>
                     </button>
                   </form>
+                  <div
+                    class="card text-white mt-3"
+                    id="card"
+                    style="border: none"
+                  >
+                    <ul id="usuarios"></ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -84,7 +86,7 @@
 
     <div
       w3-include-html="nav-bottom.html"
-      class="sticky-bottom ativo-ligas-icon ativo-ligas-sub"
+      class="sticky-bottom ativo-amigos-icon ativo-amigos-sub"
     ></div>
 
     <script
@@ -100,6 +102,7 @@
       includeHTML();
     </script>
     <script type="module" src="firebaseNavTop.js"></script>
-    <script type="module" src="./scripts/criaLiga.js"></script>
+    <script type="module" src="montaAddAmigo.js"></script>
+    <script type="module" src="eventsAddAmigo.js" defer></script>
   </body>
 </html>
