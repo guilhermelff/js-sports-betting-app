@@ -39,7 +39,7 @@ const puppeteer = require('puppeteer');
 
 
     const json = JSON.stringify(data);
-    fs.writeFile('/front-palpiteiro/web-scraping/jsonData/times.json', json, err => {
+    fs.writeFile('/front-palpiteiro/web-scraping/data/times.json', json, err => {
         if (err) {
             console.error(err);
         }

@@ -352,7 +352,7 @@ onAuthStateChanged(auth, (user) => {
             const fora = formInsereJogo['select-fora'].value;
             const data = formInsereJogo['select-data'].value;
 
-            fetch('./web-scraping/jsonData/times.json')
+            fetch('./web-scraping/data/times.json')
                 .then((response) => response.json())
                 .then((json) => {
                     var posicaoEResultados = [];
