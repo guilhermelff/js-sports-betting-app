@@ -50,6 +50,7 @@ onAuthStateChanged(auth, (user) => {
                                 id="img-notification"
                                 alt="-" />`
 
+                //AJUSTAR IMAGENS
 
                 const alerta = document.createElement("div");
                 alerta.innerHTML = `
@@ -59,7 +60,7 @@ onAuthStateChanged(auth, (user) => {
                                         <div class="card-body">
                                            <div class="modal-body d-flex justify-content-between">
                                                 <div>
-                                                    ${img}
+                                                    
                                                 </div>
                                                 <div class="">
                                                     <p id="notification-text" class="px-2 mt-1 mb-0">@${alert.amigoUsuario} quer te adicionar como amigo</p>
