@@ -1,6 +1,14 @@
-import { loadFirebaseRanking, getProfileImgUrlFirebase, getUserIdFirebase, getUserNameFirebase, retrieveUserFirebase, getDataFromIdFirebase } from "../firebase/load.js";
+import { loadFirebaseRanking, getProfileImgUrlFirebase, getUserIdFirebase, getUserNameFirebase, retrieveUserFirebase, getDataFromIdFirebase, pingFirebase } from "../firebase/load.js";
 import { addFriendFirebase, sendInviteFirebase } from "../firebase/upload.js";
 import { database } from "./settings.js";
+
+export async function pingInterface() {
+    if (database == "firebase") {
+        console.log("Ping database");
+        await pingFirebase();
+        return;
+    };
+}
 
 export async function retrieveUser(username) {
     if (database == "firebase") {

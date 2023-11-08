@@ -16,6 +16,12 @@ async function setUserId(id) {
     userID = id;
 }
 
+export async function pingFirebase() {
+    const ping = await getDoc(doc(db, "Ping", "ping"));
+    console.log("ping");
+    return ping;
+}
+
 export async function getDataFromIdFirebase(id) {
     const userDoc = await getDoc(doc(db, "Usuarios", id));
     const userData = await userDoc.data();

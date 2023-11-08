@@ -10,6 +10,11 @@
     pointer-events: none
 }
 
+.feedback {
+    scale: 0.7;
+    text-decoration: underline;
+}
+
 #img-perfil, #img-perfil-grande, #img-ranking{
     width: 100%;
   height: 100%;
@@ -183,8 +188,16 @@ body {
     
 }
 
-.apostas-ativo #botao-apostas-feitas {
+.apostas-ativo #botao-apostas-feitas  {
     background-color:  #6985bd;
+}
+
+.noti-ativo #botao-alertas{
+    background-color:  #6985bd;
+}
+
+.noti-ativo #botao-alertas i{
+    color: white;
 }
 
 .admin-ativo #botao-admin {

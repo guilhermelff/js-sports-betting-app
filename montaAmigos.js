@@ -1,4 +1,5 @@
 import { loadRanking } from "./scripts/ranking.js";
+import { ping } from "./scripts/ping.js";
 import { auth, db } from '../database/firebase/settings.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js'
 import { getProfileImgUrl, getUserId } from "./database/interfaces/database.js";
@@ -221,9 +222,8 @@ const addCardsInicial = async (pageIndex, periodo) => {
 
 
 
-    rankingSemanal = await loadRanking("Semanal");
-    rankingTemporada = await loadRanking("Temporada");
-    console.log(rankingSemanal);
+    await ping();
+
 
     const userID = await getUserId();
     console.log("ID USUARIO");

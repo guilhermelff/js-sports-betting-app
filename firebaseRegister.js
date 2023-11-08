@@ -79,7 +79,8 @@ if (document.querySelector('#form-registro') != null) {
                             pontosSemana: 0,
                             pontosTemporada: 0,
                             reds: 0,
-                            imgExt: img.substr(img.indexOf('.'))
+                            imgExt: img.substr(img.indexOf('.')),
+                            fezAposta: false
 
                         })
 

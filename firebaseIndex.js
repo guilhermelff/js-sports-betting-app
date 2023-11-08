@@ -1,7 +1,7 @@
 // Add Firebase products that you want to use
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js'
 import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js'
-import { getFirestore, collection, getDocs, setDoc, doc, collectionGroup, query, where } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js'
+import { getFirestore, collection, getDocs, setDoc, doc, collectionGroup, query, where, getDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js'
 
 //dados do banco
 const firebaseConfig = {
@@ -22,9 +22,10 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
 
+var fezAposta = false;
 
 //keep track of user logged in or out
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
 
     //elementos que aparecem para todos
     const ligasIcone = document.getElementById("link-ligas-icone");
@@ -68,9 +69,14 @@ onAuthStateChanged(auth, (user) => {
 
         const apostas = collection(db, "Usuarios", uid, "Apostas");
 
+        var verificaAposta = await getDoc(doc(db, "Usuarios", uid));
+        var verificaData = await verificaAposta.data();
+        fezAposta = verificaData.fezAposta;
+
+
         var btnAposta = document.getElementById('botao-aposta');
 
-        btnAposta.addEventListener('click', function () {
+        btnAposta.addEventListener('click', async function () {
 
             var ul = document.getElementById("selections");
             const items = ul.getElementsByTagName("li");
@@ -183,7 +189,14 @@ onAuthStateChanged(auth, (user) => {
                 select.querySelector('option[data-selection="vazio"]').selected = true;
             });
 
+            await updateDoc(doc(db, "Usuarios", uid), {
+                fezAposta: true
+
+            })
+
             alert('Aposta feita! Boa sorte!');
+
+            location.href = "apostas-feitas.html";
 
 
 
@@ -313,27 +326,28 @@ const jogosRodada = document.getElementById("jogos-rodada");
 //div mercado aberto ou fechado
 const mercado = document.getElementById("titulo");
 
-rodadas.forEach((doc) => {
+if (fezAposta == false) {
+    rodadas.forEach((doc) => {
 
-    //dados rodada
-    const rodada = doc.data();
+        //dados rodada
+        const rodada = doc.data();
 
-    if (rodada.abertaFechada == true) {
-        const rodadaNumero = rodada.numero;
-        console.log(rodadaNumero);
-        mercado.innerHTML = `Mercado Aberto - Rodada ${rodadaNumero}`;
+        if (rodada.abertaFechada == true) {
+            const rodadaNumero = rodada.numero;
+            console.log(rodadaNumero);
+            mercado.innerHTML = `Mercado Aberto - Rodada ${rodadaNumero}`;
 
-        //montar cada card de jogo
-        let html = '';
-        jogos.forEach((doc) => {
+            //montar cada card de jogo
+            let html = '';
+            jogos.forEach((doc) => {
 
-            //dados jogo
-            const jogo = doc.data();
+                //dados jogo
+                const jogo = doc.data();
 
-            if (jogo.rodada == rodada.numero) {
-                console.log(rodada.numero);
-                //peças do card
-                var cardJogo1 = `
+                if (jogo.rodada == rodada.numero) {
+                    console.log(rodada.numero);
+                    //peças do card
+                    var cardJogo1 = `
         <div class="row">
                                     <div class=" mb-4">
                                         <div class="container">
@@ -420,7 +434,7 @@ rodadas.forEach((doc) => {
                                                             </div>
     `;
 
-                var cardJogadores2 = `
+                    var cardJogadores2 = `
 
                                                             <div class="d-flex justify-content-between">
 
@@ -438,16 +452,16 @@ rodadas.forEach((doc) => {
                                                                         <optgroup label="${jogo.casa}">
     `;
 
-                var cardJogadoresGolCasaTodos3 = ``;
+                    var cardJogadoresGolCasaTodos3 = ``;
 
-                var cardJogadores4 = `
+                    var cardJogadores4 = `
         </optgroup >
         <optgroup label="${jogo.fora}">
     `;
 
-                var cardJogadoresGolForaTodos5 = ``;
+                    var cardJogadoresGolForaTodos5 = ``;
 
-                var cardJogadores6 = `
+                    var cardJogadores6 = `
         </optgroup >
                                                                     </select >
                                                                 </div >
@@ -469,17 +483,17 @@ rodadas.forEach((doc) => {
                 <optgroup label="${jogo.casa}">
     `;
 
-                var cardJogadoresCartaoCasaTodos7 = ``;
+                    var cardJogadoresCartaoCasaTodos7 = ``;
 
-                var cardJogadores8 = `
+                    var cardJogadores8 = `
                 </optgroup >
 
         <optgroup label="${jogo.fora}">
     `;
 
-                var cardJogadoresCartaoForaTodos9 = ``;
+                    var cardJogadoresCartaoForaTodos9 = ``;
 
-                var cardJogadores10 = `
+                    var cardJogadores10 = `
          </optgroup>
             </select >
         </div >
@@ -500,15 +514,15 @@ rodadas.forEach((doc) => {
                                 </div >
     `;
 
-                //iterar pelos jogadores
-                jogadores.forEach((doc) => {
-                    //dados dos jogadores
-                    const jogador = doc.data();
+                    //iterar pelos jogadores
+                    jogadores.forEach((doc) => {
+                        //dados dos jogadores
+                        const jogador = doc.data();
 
-                    //adiciona seleções de gol e cartão para jogadores do time da casa
-                    if (jogo.casa == jogador.time) {
-                        //montar card de jogadores
-                        var cardJogadoresGolCasaUnico = `
+                        //adiciona seleções de gol e cartão para jogadores do time da casa
+                        if (jogo.casa == jogador.time) {
+                            //montar card de jogadores
+                            var cardJogadoresGolCasaUnico = `
                                                                             <option class="btn-selection"
                                                                                 data-jogo="${jogo.casa} x ${jogo.fora}"
                                                                                 data-selection="Gol - ${jogador.nome} - ${jogo.casa}"
@@ -522,9 +536,9 @@ rodadas.forEach((doc) => {
                                                                             </option>
     
             `;
-                        cardJogadoresGolCasaTodos3 += cardJogadoresGolCasaUnico;
+                            cardJogadoresGolCasaTodos3 += cardJogadoresGolCasaUnico;
 
-                        var cardJogadoresCartaoCasaUnico = `
+                            var cardJogadoresCartaoCasaUnico = `
                     <option data-jogo="${jogo.casa} x ${jogo.fora}"
                         data-selection="Cartão - ${jogador.nome} - ${jogo.casa}"
                         data-pontuacao="${jogador.pontosCartao}"
@@ -536,13 +550,13 @@ rodadas.forEach((doc) => {
                         ${jogador.nome} : ${jogador.pontosCartao}
                     </option>
             `;
-                        cardJogadoresCartaoCasaTodos7 += cardJogadoresCartaoCasaUnico;
-                    }
+                            cardJogadoresCartaoCasaTodos7 += cardJogadoresCartaoCasaUnico;
+                        }
 
-                    //adiciona seleções de gol e cartão para jogadores do time de fora
-                    if (jogo.fora == jogador.time) {
-                        //montar card de jogadores
-                        var cardJogadoresGolForaUnico = `
+                        //adiciona seleções de gol e cartão para jogadores do time de fora
+                        if (jogo.fora == jogador.time) {
+                            //montar card de jogadores
+                            var cardJogadoresGolForaUnico = `
                                                                             <option class="btn-selection"
                                                                                 data-jogo="${jogo.casa} x ${jogo.fora}"
                                                                                 data-selection="Gol - ${jogador.nome} - ${jogo.fora}"
@@ -555,9 +569,9 @@ rodadas.forEach((doc) => {
                                                                             </option>
     
             `;
-                        cardJogadoresGolForaTodos5 += cardJogadoresGolForaUnico;
+                            cardJogadoresGolForaTodos5 += cardJogadoresGolForaUnico;
 
-                        var cardJogadoresCartaoForaUnico = `    
+                            var cardJogadoresCartaoForaUnico = `    
             <option data-jogo="${jogo.casa} x ${jogo.fora}"
                 data-selection="Cartão - ${jogador.nome} - ${jogo.fora}"
                 data-pontuacao="${jogador.pontosCartao}"
@@ -569,39 +583,42 @@ rodadas.forEach((doc) => {
                 ${jogador.nome} : ${jogador.pontosCartao}
             </option>
             `;
-                        cardJogadoresCartaoForaTodos9 += cardJogadoresCartaoForaUnico;
-                    }
-                })
+                            cardJogadoresCartaoForaTodos9 += cardJogadoresCartaoForaUnico;
+                        }
+                    })
 
-                //monta as peças do card
-                let card = ``;
-                card += cardJogo1;
-                card += cardJogadores2;
-                card += cardJogadoresGolCasaTodos3;
-                card += cardJogadores4;
-                card += cardJogadoresGolForaTodos5;
-                card += cardJogadores6;
-                card += cardJogadoresCartaoCasaTodos7;
-                card += cardJogadores8;
-                card += cardJogadoresCartaoForaTodos9;
-                card += cardJogadores10;
+                    //monta as peças do card
+                    let card = ``;
+                    card += cardJogo1;
+                    card += cardJogadores2;
+                    card += cardJogadoresGolCasaTodos3;
+                    card += cardJogadores4;
+                    card += cardJogadoresGolForaTodos5;
+                    card += cardJogadores6;
+                    card += cardJogadoresCartaoCasaTodos7;
+                    card += cardJogadores8;
+                    card += cardJogadoresCartaoForaTodos9;
+                    card += cardJogadores10;
 
-                //adiciona card à página
-                html += card;
+                    //adiciona card à página
+                    html += card;
 
-            }
-
-
-        });
-
-        //adicionar cards a div de jogos da rodada
-        jogosRodada.innerHTML = html;
-    }
+                }
 
 
+            });
+
+            //adicionar cards a div de jogos da rodada
+            jogosRodada.innerHTML = html;
+        }
 
 
-});
+
+
+    });
+}
+
+
 
 
 

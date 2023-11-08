@@ -219,6 +219,9 @@ const addCardsInicial = async (pageIndex, periodo) => {
                 var posicao = i + 1;
                 break;
             }
+            else {
+                posicao = 0;
+            }
         }
     }
 
@@ -227,6 +230,9 @@ const addCardsInicial = async (pageIndex, periodo) => {
             if (rankingTemporada[i][2] == userID) {
                 var posicao = i + 1;
                 break;
+            }
+            else {
+                posicao = 0;
             }
         }
     }
