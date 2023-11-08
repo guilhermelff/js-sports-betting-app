@@ -1,0 +1,12 @@
+{
+  "name": "Palpiteiro",
+  "start_url": "../index.html",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "icons/palpiteiro-icone.png",
+      "type": "image/png",
+      "sizes": "317x317"
+    }
+  ]
+}
