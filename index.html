@@ -24,6 +24,7 @@
   </head>
 
   <body>
+    
     <div w3-include-html="nav-top.html" class="sticky-top"></div>
     
 
@@ -32,12 +33,18 @@
         <div class="row d-flex justify-content-center align-items-center">
           <div class="col-sm-12 col-md-8 col-lg-6 col-xl-6">
             <div class="text-white text-center">
+              
               <h4 class="mb-2" id="titulo">Mercado Fechado</h4>
+              <h4 class="mb-2" id="apostasfeitas" style="display: none;">Apostas feitas! Boa sorte!</h4>
             </div>
 
             <div class="card" style="border-radius: 1rem" id="card">
               <div class="card-body mt-4" id="card-mercado">
                 <div id="jogos-rodada">
+                  <div class="text-center mb-3">
+                  <div class="loader" id="loader"></div>
+                  </div>
+                  
                   <!--jogos são adicionados dinâmicamente-->
                 </div>
               </div>

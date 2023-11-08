@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Palpiteiro</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="palpiteiro-icone-pequeno.ico" />
+    <link rel="manifest" href="manifest.json" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css"
+    />
+    <!-- Or for RTL support -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div w3-include-html="nav-top.html" class="sticky-top"></div>
+
+    <section class="min-vh-100 gradient-custom">
+      <div class="container py-5">
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card text-white" style="border-radius: 1rem" id="card">
+              <div class="card-body p-5 text-center">
+                <div class="mb-md-5 mt-md-4 pb-5">
+                  <p class="text-white-50 mb-5 h5">Ajuda</p>
+                  <div id="texto-ajuda">
+                    
+                    <p>
+                      - Para a fazer ficha de apostas é bem simples: selecione
+                      os botões de cada jogo de acordo com o resultado que você
+                      acha que vai acontecer, vitória da casa, empate ou vitória
+                      do time de fora, além de escolher um jogador para fazer
+                      gol na partida e outro para tomar um cartão
+                    </p>
+                    <p>
+                      - Depois de clicar em Apostar na ficha, não é possível
+                      editar as escolhas, então faça com sabedoria
+                    </p>
+                    <p>
+                      - Toda quarta-feira as apostas são resolvidas e as
+                      pontuações atribuídas aos jogadores, além de o mercado
+                      abrir de novo com os novos jogos da rodada
+                    </p>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div
+      w3-include-html="nav-bottom.html"
+      class="sticky-bottom ativo-help-icon ativo-help-sub"
+    ></div>
+
+    <script type="module" src="firebaseNavTop.js"></script>
+    <script type="module" src="firebase.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+      includeHTML();
+    </script>
+
+    <script type="module" src="montaAddAmigo.js"></script>
+    <script type="module" src="eventsAddAmigo.js" defer></script>
+  </body>
+</html>

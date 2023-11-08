@@ -22,6 +22,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
 
+
 var fezAposta = false;
 
 //keep track of user logged in or out
@@ -72,6 +73,15 @@ onAuthStateChanged(auth, async (user) => {
         var verificaAposta = await getDoc(doc(db, "Usuarios", uid));
         var verificaData = await verificaAposta.data();
         fezAposta = verificaData.fezAposta;
+
+        if (fezAposta == true) {
+            var loader = document.getElementById("loader");
+            loader.style.display = "none";
+            var titulo = document.getElementById("titulo");
+            titulo.style.display = "none";
+            var apostasfeitas = document.getElementById("apostasfeitas");
+            apostasfeitas.style.display = "block";
+        }
 
 
         var btnAposta = document.getElementById('botao-aposta');
