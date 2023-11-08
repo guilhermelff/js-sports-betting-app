@@ -46,10 +46,10 @@ if (document.querySelector('#form-registro') != null) {
         e.preventDefault();
 
         //dados usuario
-        const email = formRegistro['emailPerfil'].value.Trim();
+        var email = formRegistro['emailPerfil'].value.trim();
         const senha = formRegistro['senhaPerfil'].value;
         const repitaSenha = formRegistro['repitaSenhaPerfil'].value;
-        const usuario = formRegistro['usuarioPerfil'].value.Trim();
+        var usuario = formRegistro['usuarioPerfil'].value.trim();
         const img = formRegistro['imgPerfil'].value;
         const imgFile = formRegistro['imgPerfil'];
         const selectedFile = imgFile.files[0];
