@@ -92,7 +92,7 @@ const createPerfilLista = async (data) => {
             e.preventDefault();
             console.log("clique");
             try {
-                var usuarioPesquisa = formPesquisa['usuario-pesquisa'].value;
+                var usuarioPesquisa = formPesquisa['usuario-pesquisa'].value.trim();
                 console.log(usuarioPesquisa);
 
                 var idusuarioPesquisa = await retrieveUser(usuarioPesquisa);
